@@ -1,0 +1,107 @@
+{
+  "name": "cloudflare",
+  "description": "Cloudflare API - CDN, DNS, and security services",
+  "baseURL": "https://api.cloudflare.com/client/v4",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${CLOUDFLARE_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ListZones",
+      "path": "/zones",
+      "method": "GET",
+      "description": "List all zones (domains)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"},
+          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"},
+          {"name": "name", "type": "string", "required": false, "description": "Filter by domain name", "example": "example.com"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListDnsRecords",
+      "path": "/zones/{zone_id}/dns_records",
+      "method": "GET",
+      "description": "List DNS records in a zone",
+      "request": {
+        "pathParams": [
+          {"name": "zone_id", "type": "string", "required": true, "description": "Zone ID", "example": "zone_xxx"}
+        ],
+        "queryParams": [
+          {"name": "type", "type": "string", "required": false, "description": "Record type: A, AAAA, CNAME, TXT", "example": "A"},
+          {"name": "name", "type": "string", "required": false, "description": "Filter by name", "example": "www"},
+          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateDnsRecord",
+      "path": "/zones/{zone_id}/dns_records",
+      "method": "POST",
+      "description": "Create a DNS record",
+      "request": {
+        "pathParams": [
+          {"name": "zone_id", "type": "string", "required": true, "description": "Zone ID", "example": "zone_xxx"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "type", "type": "string", "required": true, "description": "Record type: A, AAAA, CNAME, TXT, MX", "example": "A"},
+          {"name": "name", "type": "string", "required": true, "description": "Record name", "example": "www"},
+          {"name": "content", "type": "string", "required": true, "description": "Record value", "example": "1.2.3.4"},
+          {"name": "ttl", "type": "integer", "required": false, "description": "TTL (auto: 1)", "example": "3600"},
+          {"name": "proxied", "type": "boolean", "required": false, "description": "Enable Cloudflare proxy", "example": "true"}
+        ]
+      }
+    },
+    {
+      "name": "DeleteDnsRecord",
+      "path": "/zones/{zone_id}/dns_records/{record_id}",
+      "method": "DELETE",
+      "description": "Delete a DNS record",
+      "request": {
+        "pathParams": [
+          {"name": "zone_id", "type": "string", "required": true, "description": "Zone ID", "example": "zone_xxx"},
+          {"name": "record_id", "type": "string", "required": true, "description": "Record ID", "example": "rec_xxx"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListWorkers",
+      "path": "/accounts/{account_id}/workers/scripts",
+      "method": "GET",
+      "description": "List Workers scripts",
+      "request": {
+        "pathParams": [
+          {"name": "account_id", "type": "string", "required": true, "description": "Account ID", "example": "account_xxx"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetAnalytics",
+      "path": "/zones/{zone_id}/analytics",
+      "method": "GET",
+      "description": "Get zone analytics",
+      "request": {
+        "pathParams": [
+          {"name": "zone_id", "type": "string", "required": true, "description": "Zone ID", "example": "zone_xxx"}
+        ],
+        "queryParams": [
+          {"name": "since", "type": "integer", "required": false, "description": "Start time (Unix timestamp)", "example": "1609459200"},
+          {"name": "until", "type": "integer", "required": false, "description": "End time (Unix timestamp)", "example": "1609545600"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

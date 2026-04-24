@@ -1,0 +1,99 @@
+{
+  "name": "firebase",
+  "description": "Firebase API - Mobile and web application platform",
+  "baseURL": "https://firestore.googleapis.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${FIREBASE_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ListDocuments",
+      "path": "/projects/{project}/databases/{database}/documents/{collection}",
+      "method": "GET",
+      "description": "List documents in a collection",
+      "request": {
+        "pathParams": [
+          {"name": "project", "type": "string", "required": true, "description": "Firebase project ID", "example": "my-project"},
+          {"name": "database", "type": "string", "required": false, "description": "Database ID (default: (default))", "example": "(default)"},
+          {"name": "collection", "type": "string", "required": true, "description": "Collection name", "example": "users"}
+        ],
+        "queryParams": [
+          {"name": "pageSize", "type": "integer", "required": false, "description": "Max results", "example": "100"},
+          {"name": "pageToken", "type": "string", "required": false, "description": "Pagination token", "example": "xxx"},
+          {"name": "orderBy", "type": "string", "required": false, "description": "Order by field", "example": "name"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetDocument",
+      "path": "/projects/{project}/databases/{database}/documents/{collection}/{document_id}",
+      "method": "GET",
+      "description": "Get a document",
+      "request": {
+        "pathParams": [
+          {"name": "project", "type": "string", "required": true, "description": "Project ID", "example": "my-project"},
+          {"name": "database", "type": "string", "required": false, "description": "Database ID", "example": "(default)"},
+          {"name": "collection", "type": "string", "required": true, "description": "Collection name", "example": "users"},
+          {"name": "document_id", "type": "string", "required": true, "description": "Document ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateDocument",
+      "path": "/projects/{project}/databases/{database}/documents/{collection}",
+      "method": "POST",
+      "description": "Create a document",
+      "request": {
+        "pathParams": [
+          {"name": "project", "type": "string", "required": true, "description": "Project ID", "example": "my-project"},
+          {"name": "database", "type": "string", "required": false, "description": "Database ID", "example": "(default)"},
+          {"name": "collection", "type": "string", "required": true, "description": "Collection name", "example": "users"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "fields", "type": "object", "required": true, "description": "Document fields (Firestore format)", "example": "{\"name\": {\"stringValue\": \"John\"}, \"age\": {\"integerValue\": \"30\"}}"}
+        ]
+      }
+    },
+    {
+      "name": "UpdateDocument",
+      "path": "/projects/{project}/databases/{database}/documents/{collection}/{document_id}",
+      "method": "PATCH",
+      "description": "Update a document",
+      "request": {
+        "pathParams": [
+          {"name": "project", "type": "string", "required": true, "description": "Project ID", "example": "my-project"},
+          {"name": "database", "type": "string", "required": false, "description": "Database ID", "example": "(default)"},
+          {"name": "collection", "type": "string", "required": true, "description": "Collection name", "example": "users"},
+          {"name": "document_id", "type": "string", "required": true, "description": "Document ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "fields", "type": "object", "required": true, "description": "Document fields to update", "example": "{\"age\": {\"integerValue\": \"31\"}}"}
+        ]
+      }
+    },
+    {
+      "name": "DeleteDocument",
+      "path": "/projects/{project}/databases/{database}/documents/{collection}/{document_id}",
+      "method": "DELETE",
+      "description": "Delete a document",
+      "request": {
+        "pathParams": [
+          {"name": "project", "type": "string", "required": true, "description": "Project ID", "example": "my-project"},
+          {"name": "database", "type": "string", "required": false, "description": "Database ID", "example": "(default)"},
+          {"name": "collection", "type": "string", "required": true, "description": "Collection name", "example": "users"},
+          {"name": "document_id", "type": "string", "required": true, "description": "Document ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

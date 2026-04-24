@@ -1,0 +1,108 @@
+{
+  "name": "telegram",
+  "description": "Telegram Bot API - Messaging platform",
+  "baseURL": "https://api.telegram.org/bot{token}",
+  "auth": {
+    "type": "path",
+    "params": {
+      "token": "${TELEGRAM_BOT_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "GetMe",
+      "path": "/getMe",
+      "method": "GET",
+      "description": "Get bot info",
+      "request": {
+        "pathParams": [
+          {"name": "token", "type": "string", "required": true, "description": "Bot token", "example": "123456:ABC-DefGHIjklMNOpqrSTUvwxYZ"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "SendMessage",
+      "path": "/sendMessage",
+      "method": "POST",
+      "description": "Send a message",
+      "request": {
+        "pathParams": [
+          {"name": "token", "type": "string", "required": true, "description": "Bot token", "example": "123456:ABC-DefGHIjklMNOpqrSTUvwxYZ"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "chat_id", "type": "integer", "required": true, "description": "Chat ID", "example": "123456789"},
+          {"name": "text", "type": "string", "required": true, "description": "Message text", "example": "Hello from lianAPI!"},
+          {"name": "parse_mode", "type": "string", "required": false, "description": "Parse mode: Markdown, HTML", "example": "Markdown"},
+          {"name": "disable_notification", "type": "boolean", "required": false, "description": "Disable notification", "example": "false"}
+        ]
+      }
+    },
+    {
+      "name": "GetUpdates",
+      "path": "/getUpdates",
+      "method": "GET",
+      "description": "Get bot updates",
+      "request": {
+        "pathParams": [
+          {"name": "token", "type": "string", "required": true, "description": "Bot token", "example": "123456:ABC-DefGHIjklMNOpqrSTUvwxYZ"}
+        ],
+        "queryParams": [
+          {"name": "offset", "type": "integer", "required": false, "description": "Update ID to start from", "example": "0"},
+          {"name": "limit", "type": "integer", "required": false, "description": "Max updates (1-100)", "example": "100"},
+          {"name": "timeout", "type": "integer", "required": false, "description": "Long polling timeout", "example": "0"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "SendPhoto",
+      "path": "/sendPhoto",
+      "method": "POST",
+      "description": "Send a photo",
+      "request": {
+        "pathParams": [
+          {"name": "token", "type": "string", "required": true, "description": "Bot token", "example": "123456:ABC-DefGHIjklMNOpqrSTUvwxYZ"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "chat_id", "type": "integer", "required": true, "description": "Chat ID", "example": "123456789"},
+          {"name": "photo", "type": "string", "required": true, "description": "Photo URL or file_id", "example": "https://example.com/photo.jpg"},
+          {"name": "caption", "type": "string", "required": false, "description": "Photo caption", "example": "Beautiful sunset"}
+        ]
+      }
+    },
+    {
+      "name": "GetChat",
+      "path": "/getChat",
+      "method": "GET",
+      "description": "Get chat info",
+      "request": {
+        "pathParams": [
+          {"name": "token", "type": "string", "required": true, "description": "Bot token", "example": "123456:ABC-DefGHIjklMNOpqrSTUvwxYZ"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "chat_id", "type": "integer", "required": true, "description": "Chat ID", "example": "123456789"}
+        ]
+      }
+    },
+    {
+      "name": "ListUpdates",
+      "path": "/getUpdates",
+      "method": "GET",
+      "description": "Get active updates (alias for GetUpdates)",
+      "request": {
+        "pathParams": [
+          {"name": "token", "type": "string", "required": true, "description": "Bot token", "example": "123456:ABC-DefGHIjklMNOpqrSTUvwxYZ"}
+        ],
+        "queryParams": [
+          {"name": "offset", "type": "integer", "required": false, "description": "Update ID to start from", "example": "0"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

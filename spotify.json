@@ -1,0 +1,124 @@
+{
+  "name": "spotify",
+  "description": "Spotify Web API - Music streaming and user data",
+  "baseURL": "https://api.spotify.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${SPOTIFY_ACCESS_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "GetCurrentUser",
+      "path": "/me",
+      "method": "GET",
+      "description": "Get current user profile",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetUserPlaylist",
+      "path": "/users/{user_id}/playlists/{playlist_id}",
+      "method": "GET",
+      "description": "Get playlist by ID",
+      "request": {
+        "pathParams": [
+          {"name": "user_id", "type": "string", "required": true, "description": "User ID", "example": "spotify"},
+          {"name": "playlist_id", "type": "string", "required": true, "description": "Playlist ID", "example": "4tnQRaJr2tq6rOsL5jJSe7"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "Search",
+      "path": "/search",
+      "method": "GET",
+      "description": "Search for tracks, artists, albums, playlists",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "q", "type": "string", "required": true, "description": "Search query", "example": "Led Zeppelin"},
+          {"name": "type", "type": "string", "required": true, "description": "Type: track, artist, album, playlist", "example": "track"},
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results (1-50)", "example": "20"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Offset for pagination", "example": "0"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetTrack",
+      "path": "/tracks/{id}",
+      "method": "GET",
+      "description": "Get track by ID",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Track ID", "example": "4cC9t1b3t2Jm0tJp8x1v5w"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetAlbum",
+      "path": "/albums/{id}",
+      "method": "GET",
+      "description": "Get album by ID",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Album ID", "example": "6akEvsyLgrGt3bcLf7BaSq"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetArtist",
+      "path": "/artists/{id}",
+      "method": "GET",
+      "description": "Get artist by ID",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Artist ID", "example": "1234567890abcdef1234567890abcdef"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetAlbumTracks",
+      "path": "/albums/{id}/tracks",
+      "method": "GET",
+      "description": "Get album tracks",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Album ID", "example": "6akEvsyLgrGt3bcLf7BaSq"}
+        ],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "50"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Offset", "example": "0"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetFeaturedPlaylists",
+      "path": "/browse/featured-playlists",
+      "method": "GET",
+      "description": "Get featured playlists",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "20"},
+          {"name": "country", "type": "string", "required": false, "description": "Country code", "example": "US"},
+          {"name": "locale", "type": "string", "required": false, "description": "Locale (e.g., en_US)", "example": "en_US"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

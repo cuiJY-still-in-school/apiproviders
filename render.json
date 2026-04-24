@@ -1,0 +1,97 @@
+{
+  "name": "render",
+  "description": "Render API - Cloud hosting for apps and services",
+  "baseURL": "https://api.render.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${RENDER_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ListServices",
+      "path": "/services",
+      "method": "GET",
+      "description": "List all services",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "20"},
+          {"name": "cursor", "type": "string", "required": false, "description": "Pagination cursor", "example": "xxx"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetService",
+      "path": "/services/{id}",
+      "method": "GET",
+      "description": "Get service by ID",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Service ID", "example": "svc-xxx"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateService",
+      "path": "/services",
+      "method": "POST",
+      "description": "Create a new service",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "name", "type": "string", "required": true, "description": "Service name", "example": "my-service"},
+          {"name": "type", "type": "string", "required": true, "description": "Service type: web, worker, cron, background_worker", "example": "web"},
+          {"name": "region", "type": "string", "required": false, "description": "Region: oregon, northvale, frankfurt, singapore", "example": "oregon"},
+          {"name": "plan", "type": "string", "required": false, "description": "Plan: free, starter, pro, pro_plus", "example": "starter"}
+        ]
+      }
+    },
+    {
+      "name": "ListDeploys",
+      "path": "/services/{id}/deploys",
+      "method": "GET",
+      "description": "List deployments for a service",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Service ID", "example": "svc-xxx"}
+        ],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "20"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "TriggerDeploy",
+      "path": "/services/{id}/deploys",
+      "method": "POST",
+      "description": "Trigger a new deploy",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Service ID", "example": "svc-xxx"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListJobs",
+      "path": "/jobs",
+      "method": "GET",
+      "description": "List all cron jobs",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "20"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

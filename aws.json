@@ -1,0 +1,66 @@
+{
+  "name": "aws",
+  "description": "AWS API - Cloud computing services (EC2, S3, Lambda, etc.)",
+  "baseURL": "https://{service}.amazonaws.com",
+  "auth": {
+    "type": "header",
+    "params": {
+      "header": "Authorization",
+      "value": "Bearer ${AWS_ACCESS_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "DescribeInstances",
+      "path": "/",
+      "method": "POST",
+      "description": "Describe EC2 instances",
+      "request": {
+        "pathParams": [
+          {"name": "service", "type": "string", "required": true, "description": "AWS service name", "example": "ec2"}
+        ],
+        "queryParams": [
+          {"name": "Action", "type": "string", "required": true, "description": "API action", "example": "DescribeInstances"},
+          {"name": "Version", "type": "string", "required": true, "description": "API version", "example": "2023-08-15"},
+          {"name": "Region", "type": "string", "required": false, "description": "AWS region", "example": "us-east-1"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListBuckets",
+      "path": "/",
+      "method": "GET",
+      "description": "List S3 buckets",
+      "request": {
+        "pathParams": [
+          {"name": "service", "type": "string", "required": true, "description": "Service name", "example": "s3"}
+        ],
+        "queryParams": [
+          {"name": "Action", "type": "string", "required": true, "description": "API action", "example": "ListBuckets"},
+          {"name": "Version", "type": "string", "required": true, "description": "API version", "example": "2006-03-01"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListObjects",
+      "path": "/{bucket}",
+      "method": "GET",
+      "description": "List objects in S3 bucket",
+      "request": {
+        "pathParams": [
+          {"name": "service", "type": "string", "required": true, "description": "Service name", "example": "s3"},
+          {"name": "bucket", "type": "string", "required": true, "description": "Bucket name", "example": "my-bucket"}
+        ],
+        "queryParams": [
+          {"name": "Action", "type": "string", "required": true, "description": "API action", "example": "ListObjects"},
+          {"name": "Prefix", "type": "string", "required": false, "description": "Object prefix", "example": "folder/"},
+          {"name": "MaxKeys", "type": "integer", "required": false, "description": "Max keys", "example": "100"},
+          {"name": "Version", "type": "string", "required": true, "description": "API version", "example": "2006-03-01"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

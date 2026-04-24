@@ -1,0 +1,46 @@
+{
+  "name": "resend",
+  "description": "Resend API - Email sending service",
+  "baseURL": "https://api.resend.com",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${RESEND_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "SendEmail",
+      "path": "/emails",
+      "method": "POST",
+      "description": "Send an email",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "from", "type": "string", "required": true, "description": "Sender email", "example": "onboarding@resend.dev"},
+          {"name": "to", "type": "array", "required": true, "description": "Recipient emails", "example": "["user@example.com"]"},
+          {"name": "subject", "type": "string", "required": true, "description": "Email subject", "example": "Hello from lianAPI!"},
+          {"name": "text", "type": "string", "required": false, "description": "Plain text body", "example": "This is the email body"},
+          {"name": "html", "type": "string", "required": false, "description": "HTML body", "example": "<h1>Hello</h1><p>This is the email body</p>"},
+          {"name": "cc", "type": "array", "required": false, "description": "CC recipients", "example": "["cc@example.com"]"},
+          {"name": "bcc", "type": "array", "required": false, "description": "BCC recipients", "example": "["bcc@example.com"]"},
+          {"name": "reply_to", "type": "string", "required": false, "description": "Reply-to address", "example": "reply@example.com"}
+        ]
+      }
+    },
+    {
+      "name": "GetEmail",
+      "path": "/emails/{id}",
+      "method": "GET",
+      "description": "Get email status by ID",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Email ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

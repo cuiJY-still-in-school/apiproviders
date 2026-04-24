@@ -1,0 +1,121 @@
+{
+  "name": "digitalocean",
+  "description": "DigitalOcean API - Cloud hosting for developers",
+  "baseURL": "https://api.digitalocean.com/v2",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${DIGITALOCEAN_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ListDroplets",
+      "path": "/droplets",
+      "method": "GET",
+      "description": "List all droplets",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"},
+          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"},
+          {"name": "tag_name", "type": "string", "required": false, "description": "Filter by tag", "example": "web"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetDroplet",
+      "path": "/droplets/{id}",
+      "method": "GET",
+      "description": "Get droplet by ID",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "integer", "required": true, "description": "Droplet ID", "example": "123456"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListVolumes",
+      "path": "/volumes",
+      "method": "GET",
+      "description": "List block storage volumes",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListDomains",
+      "path": "/domains",
+      "method": "GET",
+      "description": "List DNS domains",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateDomain",
+      "path": "/domains",
+      "method": "POST",
+      "description": "Create a DNS domain",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "name", "type": "string", "required": true, "description": "Domain name", "example": "example.com"},
+          {"name": "ip_address", "type": "string", "required": true, "description": "Default IPv4 address", "example": "1.2.3.4"}
+        ]
+      }
+    },
+    {
+      "name": "ListImages",
+      "path": "/images",
+      "method": "GET",
+      "description": "List images (snapshots, distros)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "type", "type": "string", "required": false, "description": "Type: snapshot, distribution, application", "example": "distribution"},
+          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListSizes",
+      "path": "/sizes",
+      "method": "GET",
+      "description": "List available droplet sizes",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListRegions",
+      "path": "/regions",
+      "method": "GET",
+      "description": "List available regions",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

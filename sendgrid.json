@@ -1,0 +1,69 @@
+{
+  "name": "sendgrid",
+  "description": "SendGrid API - Email delivery and marketing",
+  "baseURL": "https://api.sendgrid.com/v3",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${SENDGRID_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "SendMail",
+      "path": "/mail/send",
+      "method": "POST",
+      "description": "Send an email",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "personalizations", "type": "array", "required": true, "description": "Recipient list", "example": "[{\"to\": [{\"email\": \"user@example.com\"}]}]"},
+          {"name": "from", "type": "object", "required": true, "description": "Sender", "example": "{\"email\": \"sender@example.com\"}"},
+          {"name": "subject", "type": "string", "required": true, "description": "Subject", "example": "Hello from lianAPI!"},
+          {"name": "content", "type": "array", "required": false, "description": "Email body", "example": "[{\"type\": \"text/plain\", \"value\": \"Hello\"}]"}
+        ]
+      }
+    },
+    {
+      "name": "ListContacts",
+      "path": "/marketing/contacts",
+      "method": "GET",
+      "description": "List contacts in marketing campaigns",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "page_size", "type": "integer", "required": false, "description": "Results per page", "example": "100"},
+          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "AddContact",
+      "path": "/marketing/contacts",
+      "method": "PUT",
+      "description": "Add or update a contact",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "contacts", "type": "array", "required": true, "description": "Contacts array", "example": "[{\"email\": \"user@example.com\", \"first_name\": \"John\", \"last_name\": \"Doe\"}]"}
+        ]
+      }
+    },
+    {
+      "name": "ListCampaigns",
+      "path": "/marketing/campaigns",
+      "method": "GET",
+      "description": "List marketing campaigns",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "page_size", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

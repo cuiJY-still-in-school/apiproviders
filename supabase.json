@@ -1,0 +1,98 @@
+{
+  "name": "supabase",
+  "description": "Supabase API - Open source Firebase alternative",
+  "baseURL": "https://{project_ref}.supabase.co/rest/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${SUPABASE_ACCESS_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "Select",
+      "path": "/rest/v1/{table}",
+      "method": "GET",
+      "description": "Select rows from a table",
+      "request": {
+        "pathParams": [
+          {"name": "project_ref", "type": "string", "required": true, "description": "Project reference ID", "example": "abc123"},
+          {"name": "table", "type": "string", "required": true, "description": "Table name", "example": "users"}
+        ],
+        "queryParams": [
+          {"name": "select", "type": "string", "required": false, "description": "Columns to select (* for all)", "example": "*"},
+          {"name": "eq", "type": "string", "required": false, "description": "Filter (column.value)", "example": "id.eq.1"},
+          {"name": "limit", "type": "integer", "required": false, "description": "Max rows", "example": "10"},
+          {"name": "order", "type": "string", "required": false, "description": "Order by (column.desc)", "example": "created_at.desc"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "Insert",
+      "path": "/rest/v1/{table}",
+      "method": "POST",
+      "description": "Insert rows",
+      "request": {
+        "pathParams": [
+          {"name": "project_ref", "type": "string", "required": true, "description": "Project reference ID", "example": "abc123"},
+          {"name": "table", "type": "string", "required": true, "description": "Table name", "example": "users"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "data", "type": "object", "required": true, "description": "Row data", "example": "{\"name\": \"John\", \"email\": \"john@example.com\"}"}
+        ]
+      }
+    },
+    {
+      "name": "Update",
+      "path": "/rest/v1/{table}",
+      "method": "PATCH",
+      "description": "Update rows",
+      "request": {
+        "pathParams": [
+          {"name": "project_ref", "type": "string", "required": true, "description": "Project reference ID", "example": "abc123"},
+          {"name": "table", "type": "string", "required": true, "description": "Table name", "example": "users"}
+        ],
+        "queryParams": [
+          {"name": "eq", "type": "string", "required": true, "description": "Filter (column.value)", "example": "id.eq.1"}
+        ],
+        "body": [
+          {"name": "data", "type": "object", "required": true, "description": "Data to update", "example": "{\"name\": \"Jane\"}"}
+        ]
+      }
+    },
+    {
+      "name": "Delete",
+      "path": "/rest/v1/{table}",
+      "method": "DELETE",
+      "description": "Delete rows",
+      "request": {
+        "pathParams": [
+          {"name": "project_ref", "type": "string", "required": true, "description": "Project reference ID", "example": "abc123"},
+          {"name": "table", "type": "string", "required": true, "description": "Table name", "example": "users"}
+        ],
+        "queryParams": [
+          {"name": "eq", "type": "string", "required": true, "description": "Filter (column.value)", "example": "id.eq.1"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "Rpc",
+      "path": "/rest/v1/rpc/{function}",
+      "method": "POST",
+      "description": "Call a stored function",
+      "request": {
+        "pathParams": [
+          {"name": "project_ref", "type": "string", "required": true, "description": "Project reference ID", "example": "abc123"},
+          {"name": "function", "type": "string", "required": true, "description": "Function name", "example": "my_function"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "args", "type": "object", "required": false, "description": "Function arguments", "example": "{\"arg1\": \"value1\"}"}
+        ]
+      }
+    }
+  ]
+}

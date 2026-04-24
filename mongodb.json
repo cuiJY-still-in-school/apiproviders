@@ -1,0 +1,92 @@
+{
+  "name": "mongodb",
+  "description": "MongoDB Atlas API - Cloud database service",
+  "baseURL": "https://cloud.mongodb.com/api/atlas/v1.0",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${MONGODB_ATLAS_PUBLIC_KEY}:${MONGODB_ATLAS_PRIVATE_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ListClusters",
+      "path": "/clusters",
+      "method": "GET",
+      "description": "List all clusters",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "groupId", "type": "string", "required": true, "description": "Project ID", "example": "your_project_id"},
+          {"name": "itemsPerPage", "type": "integer", "required": false, "description": "Items per page", "example": "20"},
+          {"name": "pageNum", "type": "integer", "required": false, "description": "Page number", "example": "1"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetCluster",
+      "path": "/clusters/{cluster_name}",
+      "method": "GET",
+      "description": "Get cluster details",
+      "request": {
+        "pathParams": [
+          {"name": "cluster_name", "type": "string", "required": true, "description": "Cluster name", "example": "Cluster0"}
+        ],
+        "queryParams": [
+          {"name": "groupId", "type": "string", "required": true, "description": "Project ID", "example": "your_project_id"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListDatabases",
+      "path": "/groups/{groupId}/clusters/{clusterName}/databases",
+      "method": "GET",
+      "description": "List databases in a cluster",
+      "request": {
+        "pathParams": [
+          {"name": "groupId", "type": "string", "required": true, "description": "Project ID", "example": "your_project_id"},
+          {"name": "clusterName", "type": "string", "required": true, "description": "Cluster name", "example": "Cluster0"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListUsers",
+      "path": "/groups/{groupId}/users",
+      "method": "GET",
+      "description": "List project users",
+      "request": {
+        "pathParams": [
+          {"name": "groupId", "type": "string", "required": true, "description": "Project ID", "example": "your_project_id"}
+        ],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "100"},
+          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateUser",
+      "path": "/groups/{groupId}/users",
+      "method": "POST",
+      "description": "Create a user",
+      "request": {
+        "pathParams": [
+          {"name": "groupId", "type": "string", "required": true, "description": "Project ID", "example": "your_project_id"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "emailAddress", "type": "string", "required": true, "description": "User email", "example": "user@example.com"},
+          {"name": "password", "type": "string", "required": true, "description": "User password", "example": "securepassword"},
+          {"name": "firstName", "type": "string", "required": true, "description": "First name", "example": "John"},
+          {"name": "lastName", "type": "string", "required": true, "description": "Last name", "example": "Doe"},
+          {"name": "roles", "type": "array", "required": true, "description": "User roles", "example": "[{\"groupId\": \"your_project_id\", \"roleName\": \"GROUP_DATA_ACCESS_READ_WRITE\"}]"}
+        ]
+      }
+    }
+  ]
+}

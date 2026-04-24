@@ -1,0 +1,113 @@
+{
+  "name": "discord",
+  "description": "Discord API - Real-time messaging and guild management",
+  "baseURL": "https://discord.com/api/v10",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${DISCORD_BOT_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "GetCurrentUser",
+      "path": "/users/@me",
+      "method": "GET",
+      "description": "Get current bot user",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetUser",
+      "path": "/users/{user_id}",
+      "method": "GET",
+      "description": "Get user by ID",
+      "request": {
+        "pathParams": [
+          {"name": "user_id", "type": "string", "required": true, "description": "User ID", "example": "123456789012345678"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListGuilds",
+      "path": "/users/@me/guilds",
+      "method": "GET",
+      "description": "List guilds the bot is in",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results (1-200)", "example": "100"},
+          {"name": "after", "type": "string", "required": false, "description": "Guild ID to paginate after", "example": "0"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListChannels",
+      "path": "/guilds/{guild_id}/channels",
+      "method": "GET",
+      "description": "List channels in a guild",
+      "request": {
+        "pathParams": [
+          {"name": "guild_id", "type": "string", "required": true, "description": "Guild ID", "example": "123456789012345678"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateMessage",
+      "path": "/channels/{channel_id}/messages",
+      "method": "POST",
+      "description": "Send a message to a channel",
+      "request": {
+        "pathParams": [
+          {"name": "channel_id", "type": "string", "required": true, "description": "Channel ID", "example": "123456789012345678"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "content", "type": "string", "required": true, "description": "Message content", "example": "Hello from lianAPI!"},
+          {"name": "tts", "type": "boolean", "required": false, "description": "Text-to-speech", "example": "false"}
+        ]
+      }
+    },
+    {
+      "name": "GetChannelMessages",
+      "path": "/channels/{channel_id}/messages",
+      "method": "GET",
+      "description": "Get channel messages",
+      "request": {
+        "pathParams": [
+          {"name": "channel_id", "type": "string", "required": true, "description": "Channel ID", "example": "123456789012345678"}
+        ],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max messages (1-100)", "example": "50"},
+          {"name": "before", "type": "string", "required": false, "description": "Message ID before", "example": "123456789012345678"},
+          {"name": "after", "type": "string", "required": false, "description": "Message ID after", "example": "123456789012345678"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListGuildMembers",
+      "path": "/guilds/{guild_id}/members",
+      "method": "GET",
+      "description": "List guild members",
+      "request": {
+        "pathParams": [
+          {"name": "guild_id", "type": "string", "required": true, "description": "Guild ID", "example": "123456789012345678"}
+        ],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results (1-1000)", "example": "100"},
+          {"name": "after", "type": "string", "required": false, "description": "User ID after which to start", "example": "0"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

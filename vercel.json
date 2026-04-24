@@ -1,0 +1,106 @@
+{
+  "name": "vercel",
+  "description": "Vercel API - Frontend cloud platform and deployment",
+  "baseURL": "https://api.vercel.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${VERCEL_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "GetCurrentUser",
+      "path": "/user",
+      "method": "GET",
+      "description": "Get current user",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListDeployments",
+      "path": "/deployments",
+      "method": "GET",
+      "description": "List deployments",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "20"},
+          {"name": "until", "type": "integer", "required": false, "description": "Unix timestamp", "example": "1609459200"},
+          {"name": "state", "type": "string", "required": false, "description": "State filter: READY, ERROR, BUILDING, QUEUED", "example": "READY"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetDeployment",
+      "path": "/deployments/{id}",
+      "method": "GET",
+      "description": "Get deployment by ID or URL",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Deployment ID or URL", "example": "dpl_xxx"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListProjects",
+      "path": "/projects",
+      "method": "GET",
+      "description": "List projects",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "20"},
+          {"name": "search", "type": "string", "required": false, "description": "Search projects", "example": "my-project"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetProject",
+      "path": "/projects/{id}",
+      "method": "GET",
+      "description": "Get project by ID",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Project ID", "example": "prj_xxx"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateDeployment",
+      "path": "/v1/deployments",
+      "method": "POST",
+      "description": "Create a new deployment",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "name", "type": "string", "required": true, "description": "Project name", "example": "my-project"},
+          {"name": "gitSource", "type": "object", "required": false, "description": "Git source", "example": "{\"type\": \"github\", \"repo\": \"user/repo\", \"branch\": \"main\"}"},
+          {"name": "project", "type": "string", "required": false, "description": "Project ID", "example": "prj_xxx"},
+          {"name": "target", "type": "string", "required": false, "description": "Target environment: production, preview", "example": "production"}
+        ]
+      }
+    },
+    {
+      "name": "ListDomains",
+      "path": "/domains",
+      "method": "GET",
+      "description": "List domains",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

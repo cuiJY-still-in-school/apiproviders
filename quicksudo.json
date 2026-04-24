@@ -1,0 +1,83 @@
+{
+  "name": "quicksudo",
+  "description": "Secure sudo wrapper for AI agents - execute privileged commands without exposing passwords to AI",
+  "baseURL": "local",
+  "docsURL": "https://github.com/cuiJY-still-in-school/apiproviders/tree/main/quicksudo",
+  "auth": {
+    "type": "localkey",
+    "params": {
+      "key_file": "~/.lian/quicksudo/key.hash"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "Execute",
+      "path": "/quicksudo/exec",
+      "method": "POST",
+      "description": "Execute a command with sudo privileges using the stored key",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "command", "type": "string", "required": true, "description": "Command to execute (without sudo prefix)", "example": "apt update && apt upgrade"},
+          {"name": "sudo_key", "type": "string", "required": false, "description": "Sudo key (can also be set via LIAN_SUDO_KEY env var)"}
+        ]
+      }
+    },
+    {
+      "name": "VerifyKey",
+      "path": "/quicksudo/verify",
+      "method": "POST",
+      "description": "Verify if the configured sudo key is valid",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "key", "type": "string", "required": true, "description": "Key to verify"}
+        ]
+      }
+    },
+    {
+      "name": "SetKey",
+      "path": "/quicksudo/set-key",
+      "method": "POST",
+      "description": "Set or update the sudo key (user should do this locally, not via AI)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "key", "type": "string", "required": true, "description": "New sudo key (min 8 characters)"}
+        ]
+      }
+    },
+    {
+      "name": "GetConfig",
+      "path": "/quicksudo/config",
+      "method": "GET",
+      "description": "Get current configuration",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "UpdateConfig",
+      "path": "/quicksudo/config",
+      "method": "PUT",
+      "description": "Update configuration (timeout, allowed commands)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "timeout", "type": "integer", "required": false, "description": "Command timeout in seconds"},
+          {"name": "allowed_commands", "type": "array", "required": false, "description": "Regex patterns for allowed commands (empty = all)"}
+        ]
+      }
+    }
+  ],
+  "local_only": true,
+  "handler_script": "quicksudo.py",
+  "install_requires": []
+}

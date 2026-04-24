@@ -1,0 +1,52 @@
+{
+  "name": "azure-openai",
+  "description": "Azure OpenAI API - Microsoft's OpenAI service",
+  "baseURL": "https://{resource}.openai.azure.com",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${AZURE_OPENAI_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ChatCompletions",
+      "path": "/openai/deployments/{deployment}/chat/completions",
+      "method": "POST",
+      "description": "Chat completion (Azure OpenAI format)",
+      "request": {
+        "pathParams": [
+          {"name": "resource", "type": "string", "required": true, "description": "Azure resource name", "example": "my-resource"},
+          {"name": "deployment", "type": "string", "required": true, "description": "Deployment name", "example": "gpt-4o"}
+        ],
+        "queryParams": [
+          {"name": "api-version", "type": "string", "required": true, "description": "API version", "example": "2024-02-01"}
+        ],
+        "body": [
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+        ]
+      }
+    },
+    {
+      "name": "Completions",
+      "path": "/openai/deployments/{deployment}/completions",
+      "method": "POST",
+      "description": "Text completion",
+      "request": {
+        "pathParams": [
+          {"name": "resource", "type": "string", "required": true, "description": "Azure resource name", "example": "my-resource"},
+          {"name": "deployment", "type": "string", "required": true, "description": "Deployment name", "example": "gpt-35-turbo"}
+        ],
+        "queryParams": [
+          {"name": "api-version", "type": "string", "required": true, "description": "API version", "example": "2024-02-01"}
+        ],
+        "body": [
+          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"}
+        ]
+      }
+    }
+  ]
+}

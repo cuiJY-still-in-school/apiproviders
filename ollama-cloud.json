@@ -1,0 +1,42 @@
+{
+  "name": "ollama-cloud",
+  "description": "Ollama Cloud API - Hosted Ollama models",
+  "baseURL": "https://api.ollama.com/api",
+  "auth": {
+    "type": "none",
+    "params": {}
+  },
+  "apis": [
+    {
+      "name": "ChatCompletions",
+      "path": "/chat",
+      "method": "POST",
+      "description": "Chat completion with Ollama models",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model: llama3.2, mistral, etc.", "example": "llama3.2"},
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
+          {"name": "stream", "type": "boolean", "required": false, "description": "Enable streaming", "example": "false"}
+        ]
+      }
+    },
+    {
+      "name": "Generate",
+      "path": "/generate",
+      "method": "POST",
+      "description": "Text generation",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "llama3.2"},
+          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
+          {"name": "stream", "type": "boolean", "required": false, "description": "Enable streaming", "example": "false"}
+        ]
+      }
+    }
+  ]
+}

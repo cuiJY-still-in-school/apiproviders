@@ -1,0 +1,59 @@
+{
+  "name": "openai-compatible",
+  "description": "OpenAI-Compatible API - Generic OpenAI format endpoint",
+  "baseURL": "https://api.openai.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${OPENAI_COMPAT_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ChatCompletions",
+      "path": "/chat/completions",
+      "method": "POST",
+      "description": "Chat completion (OpenAI compatible format)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "gpt-4o-mini"},
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"},
+          {"name": "stream", "type": "boolean", "required": false, "description": "Enable streaming", "example": "false"}
+        ]
+      }
+    },
+    {
+      "name": "Completions",
+      "path": "/completions",
+      "method": "POST",
+      "description": "Text completion (legacy)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "text-davinci-003"},
+          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"}
+        ]
+      }
+    },
+    {
+      "name": "Embeddings",
+      "path": "/embeddings",
+      "method": "POST",
+      "description": "Text embeddings",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model: text-embedding-3-small, text-embedding-3-large", "example": "text-embedding-3-small"},
+          {"name": "input", "type": "string", "required": true, "description": "Input text", "example": "Hello world"}
+        ]
+      }
+    }
+  ]
+}

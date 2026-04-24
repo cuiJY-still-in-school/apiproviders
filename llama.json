@@ -1,0 +1,44 @@
+{
+  "name": "llama",
+  "description": "Meta Llama API - Open source AI models",
+  "baseURL": "https://api.llama.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${LLAMA_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ChatCompletion",
+      "path": "/chat/completions",
+      "method": "POST",
+      "description": "Chat completion with Llama models",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model: llama-3.1-405b-instruct, llama-3.1-70b-instruct, etc.", "example": "llama-3.1-405b-instruct"},
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+        ]
+      }
+    },
+    {
+      "name": "Completion",
+      "path": "/completion",
+      "method": "POST",
+      "description": "Text completion",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "llama-3.1-405b-instruct"},
+          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"}
+        ]
+      }
+    }
+  ]
+}

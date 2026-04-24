@@ -1,0 +1,31 @@
+{
+  "name": "cloudflare-workers-ai",
+  "description": "Cloudflare Workers AI API - Edge AI inference",
+  "baseURL": "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${CLOUDFLARE_API_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ChatCompletions",
+      "path": "/v1/chat/completions",
+      "method": "POST",
+      "description": "Chat completion with Workers AI models",
+      "request": {
+        "pathParams": [
+          {"name": "account_id", "type": "string", "required": true, "description": "Cloudflare Account ID", "example": "xxx"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model: @cf/meta/llama-3-70b-instruct, @cf/mistralai/mistral-7b-instruct-v0.1", "example": "@cf/meta/llama-3-70b-instruct"},
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+        ]
+      }
+    }
+  ]
+}

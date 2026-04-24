@@ -1,0 +1,44 @@
+{
+  "name": "fireworks-ai",
+  "description": "Fireworks AI API - High-speed AI inference",
+  "baseURL": "https://api.fireworks.ai/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${FIREWORKS_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ChatCompletions",
+      "path": "/chat/completions",
+      "method": "POST",
+      "description": "Chat completion",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "fireworks-ai/firefunction-v1"},
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+        ]
+      }
+    },
+    {
+      "name": "Completions",
+      "path": "/completions",
+      "method": "POST",
+      "description": "Text completion",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "fireworks-ai/llama-3-70b-instruct"},
+          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"}
+        ]
+      }
+    }
+  ]
+}

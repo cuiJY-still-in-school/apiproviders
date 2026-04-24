@@ -1,0 +1,29 @@
+{
+  "name": "perplexity",
+  "description": "Perplexity API - AI search engine",
+  "baseURL": "https://api.perplexity.ai",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${PERPLEXITY_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ChatCompletions",
+      "path": "/chat/completions",
+      "method": "POST",
+      "description": "Chat completion with Perplexity models (with web search)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model: pplx-7b-online, pplx-70b-online, sonar, sonar-reasoning", "example": "sonar"},
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+        ]
+      }
+    }
+  ]
+}

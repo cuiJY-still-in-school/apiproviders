@@ -1,0 +1,59 @@
+{
+  "name": "cohere",
+  "description": "Cohere API - Enterprise AI platform",
+  "baseURL": "https://api.cohere.ai/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${COHERE_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "Chat",
+      "path": "/chat",
+      "method": "POST",
+      "description": "Chat with Cohere models",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model: command-r-plus, command-r, command", "example": "command-r-plus"},
+          {"name": "message", "type": "string", "required": true, "description": "User message", "example": "Hello"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-5)", "example": "0.7"},
+          {"name": "conversation_id", "type": "string", "required": false, "description": "Conversation ID for context", "example": "xxx"}
+        ]
+      }
+    },
+    {
+      "name": "Generate",
+      "path": "/generate",
+      "method": "POST",
+      "description": "Text generation",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "command-r-plus"},
+          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature", "example": "0.7"}
+        ]
+      }
+    },
+    {
+      "name": "Embed",
+      "path": "/embed",
+      "method": "POST",
+      "description": "Text embeddings",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model: embed-english-v3.0, embed-multilingual-v3.0", "example": "embed-english-v3.0"},
+          {"name": "texts", "type": "array", "required": true, "description": "Texts to embed", "example": "[\"Hello world\"]"}
+        ]
+      }
+    }
+  ]
+}

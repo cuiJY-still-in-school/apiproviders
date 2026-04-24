@@ -1,0 +1,44 @@
+{
+  "name": "huggingface",
+  "description": "Hugging Face API - ML models and AI inference",
+  "baseURL": "https://api-inference.huggingface.co",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${HUGGINGFACE_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "Inference",
+      "path": "/models/{model}",
+      "method": "POST",
+      "description": "Run inference on a model",
+      "request": {
+        "pathParams": [
+          {"name": "model", "type": "string", "required": true, "description": "Model ID (e.g., gpt2, facebook/bart-large-cnn)", "example": "gpt2"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "inputs", "type": "string", "required": true, "description": "Input text or data", "example": "The movie was"},
+          {"name": "parameters", "type": "object", "required": false, "description": "Model parameters", "example": "{\"max_new_tokens\": 50}"}
+        ]
+      }
+    },
+    {
+      "name": "ListModels",
+      "path": "/models",
+      "method": "GET",
+      "description": "List available models",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "search", "type": "string", "required": false, "description": "Search filter", "example": "text-generation"},
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "20"},
+          {"name": "sort", "type": "string", "required": false, "description": "Sort by: downloads, likes, trending", "example": "downloads"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

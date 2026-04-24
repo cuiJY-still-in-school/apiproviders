@@ -1,0 +1,75 @@
+{
+  "name": "docker-hub",
+  "description": "Docker Hub API - Container registry and image search",
+  "baseURL": "https://hub.docker.com/v2",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${DOCKER_HUB_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "SearchRepositories",
+      "path": "/search/repositories",
+      "method": "GET",
+      "description": "Search Docker Hub repositories",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "query", "type": "string", "required": true, "description": "Search query", "example": "nginx"},
+          {"name": "page_size", "type": "integer", "required": false, "description": "Results per page", "example": "25"},
+          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetRepository",
+      "path": "/repositories/{namespace}/{repo}",
+      "method": "GET",
+      "description": "Get repository details",
+      "request": {
+        "pathParams": [
+          {"name": "namespace", "type": "string", "required": true, "description": "Namespace (user/org)", "example": "library"},
+          {"name": "repo", "type": "string", "required": true, "description": "Repository name", "example": "nginx"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetTags",
+      "path": "/repositories/{namespace}/{repo}/tags",
+      "method": "GET",
+      "description": "List repository tags",
+      "request": {
+        "pathParams": [
+          {"name": "namespace", "type": "string", "required": true, "description": "Namespace", "example": "library"},
+          {"name": "repo", "type": "string", "required": true, "description": "Repository name", "example": "nginx"}
+        ],
+        "queryParams": [
+          {"name": "page_size", "type": "integer", "required": false, "description": "Results per page", "example": "25"},
+          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetUserRepositories",
+      "path": "/users/{username}/repositories",
+      "method": "GET",
+      "description": "List user repositories",
+      "request": {
+        "pathParams": [
+          {"name": "username", "type": "string", "required": true, "description": "Username", "example": "nginx"}
+        ],
+        "queryParams": [
+          {"name": "page_size", "type": "integer", "required": false, "description": "Results per page", "example": "25"},
+          {"name": "namespace_type", "type": "string", "required": false, "description": "Type: owner, collaborator, team", "example": "owner"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

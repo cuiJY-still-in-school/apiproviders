@@ -1,0 +1,74 @@
+{
+  "name": "twitter",
+  "description": "Twitter/X API v2 - Social media platform",
+  "baseURL": "https://api.twitter.com/2",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${TWITTER_BEARER_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "GetUserByUsername",
+      "path": "/users/by/username/{username}",
+      "method": "GET",
+      "description": "Get user by username",
+      "request": {
+        "pathParams": [
+          {"name": "username", "type": "string", "required": true, "description": "Twitter username (without @)", "example": "elonmusk"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetUsersTweets",
+      "path": "/users/{id}/tweets",
+      "method": "GET",
+      "description": "Get user's recent tweets",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "User ID", "example": "1234567890"}
+        ],
+        "queryParams": [
+          {"name": "max_results", "type": "integer", "required": false, "description": "Max tweets (5-100)", "example": "10"},
+          {"name": "tweet.fields", "type": "string", "required": false, "description": "Tweet fields to include", "example": "created_at,public_metrics"},
+          {"name": "start_time", "type": "string", "required": false, "description": "Start time (ISO 8601)", "example": "2024-01-01T00:00:00Z"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "SearchRecentTweets",
+      "path": "/tweets/search/recent",
+      "method": "GET",
+      "description": "Search recent tweets",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "query", "type": "string", "required": true, "description": "Search query (rules apply)", "example": "from:elonmusk lang:en"},
+          {"name": "max_results", "type": "integer", "required": false, "description": "Max results (10-100)", "example": "10"},
+          {"name": "tweet.fields", "type": "string", "required": false, "description": "Tweet fields", "example": "created_at,public_metrics"},
+          {"name": "sort_order", "type": "string", "required": false, "description": "Sort: recency, relevance", "example": "recency"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetTweetById",
+      "path": "/tweets/{id}",
+      "method": "GET",
+      "description": "Get tweet by ID",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Tweet ID", "example": "1234567890"}
+        ],
+        "queryParams": [
+          {"name": "tweet.fields", "type": "string", "required": false, "description": "Tweet fields", "example": "created_at,public_metrics"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

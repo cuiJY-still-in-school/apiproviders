@@ -1,0 +1,44 @@
+{
+  "name": "claude",
+  "description": "Anthropic Claude API - AI assistant for complex tasks",
+  "baseURL": "https://api.anthropic.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${ANTHROPIC_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "CreateMessage",
+      "path": "/messages",
+      "method": "POST",
+      "description": "Create a message with Claude",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model: claude-3-5-sonnet-latest, claude-3-opus-latest, etc.", "example": "claude-3-5-sonnet-latest"},
+          {"name": "max_tokens", "type": "integer", "required": true, "description": "Max response tokens", "example": "1024"},
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"}
+        ]
+      }
+    },
+    {
+      "name": "CreateCompletion",
+      "path": "/messages",
+      "method": "POST",
+      "description": "Create a completion (legacy)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "claude-3-5-sonnet-latest"},
+          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Hello, Claude"},
+          {"name": "max_tokens_to_sample", "type": "integer", "required": true, "description": "Max tokens", "example": "1024"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-1)", "example": "0.7"}
+        ]
+      }
+    }
+  ]
+}

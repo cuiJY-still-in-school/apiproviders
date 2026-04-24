@@ -1,0 +1,68 @@
+{
+  "name": "npm-registry",
+  "description": "npm Registry API - JavaScript package registry",
+  "baseURL": "https://registry.npmjs.org",
+  "auth": {
+    "type": "none",
+    "params": {}
+  },
+  "apis": [
+    {
+      "name": "GetPackage",
+      "path": "/{package}",
+      "method": "GET",
+      "description": "Get package metadata",
+      "request": {
+        "pathParams": [
+          {"name": "package", "type": "string", "required": true, "description": "Package name", "example": "lodash"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "SearchPackages",
+      "path": "/-/v1/search",
+      "method": "GET",
+      "description": "Search packages",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "text", "type": "string", "required": true, "description": "Search query", "example": "express"},
+          {"name": "size", "type": "integer", "required": false, "description": "Number of results", "example": "20"},
+          {"name": "quality", "type": "number", "required": false, "description": "Quality filter (0-1)", "example": "0.65"},
+          {"name": "popularity", "type": "number", "required": false, "description": "Popularity filter (0-1)", "example": "0.98"},
+          {"name": "maintenance", "type": "number", "required": false, "description": "Maintenance filter (0-1)", "example": "0.5"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetPackageVersion",
+      "path": "/{package}/{version}",
+      "method": "GET",
+      "description": "Get specific version metadata",
+      "request": {
+        "pathParams": [
+          {"name": "package", "type": "string", "required": true, "description": "Package name", "example": "lodash"},
+          {"name": "version", "type": "string", "required": true, "description": "Version", "example": "4.17.21"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetDownloadStats",
+      "path": "/downloads/range/last-month/{package}",
+      "method": "GET",
+      "description": "Get download stats for last month",
+      "request": {
+        "pathParams": [
+          {"name": "package", "type": "string", "required": true, "description": "Package name", "example": "lodash"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

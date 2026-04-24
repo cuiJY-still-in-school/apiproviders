@@ -1,0 +1,76 @@
+{
+  "name": "amazon-ses",
+  "description": "Amazon SES API - Email service from AWS",
+  "baseURL": "https://email.{region}.amazonaws.com",
+  "auth": {
+    "type": "header",
+    "params": {
+      "header": "X-Aws-Parameters-Secrets-Token",
+      "value": "${AWS_ACCESS_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "SendEmail",
+      "path": "/v1/email/send",
+      "method": "POST",
+      "description": "Send an email",
+      "request": {
+        "pathParams": [
+          {"name": "region", "type": "string", "required": true, "description": "AWS region", "example": "us-east-1"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "Source", "type": "string", "required": true, "description": "Sender email", "example": "sender@example.com"},
+          {"name": "Destination", "type": "object", "required": true, "description": "Recipients", "example": "{\"ToAddresses\": [\"user@example.com\"]}"},
+          {"name": "Message", "type": "object", "required": true, "description": "Email content", "example": "{\"Subject\": {\"Data\": \"Hello\"}, \"Body\": {\"Text\": {\"Data\": \"Body\"}}}"}
+        ]
+      }
+    },
+    {
+      "name": "SendRawEmail",
+      "path": "/v1/email/send-raw",
+      "method": "POST",
+      "description": "Send raw email (with attachments)",
+      "request": {
+        "pathParams": [
+          {"name": "region", "type": "string", "required": true, "description": "AWS region", "example": "us-east-1"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "RawMessage", "type": "object", "required": true, "description": "Raw message data", "example": "{\"Data\": \"base64_encoded_message\"}"}
+        ]
+      }
+    },
+    {
+      "name": "ListIdentities",
+      "path": "/v1/email/list-identities",
+      "method": "GET",
+      "description": "List verified email identities",
+      "request": {
+        "pathParams": [
+          {"name": "region", "type": "string", "required": true, "description": "AWS region", "example": "us-east-1"}
+        ],
+        "queryParams": [
+          {"name": "MaxItems", "type": "integer", "required": false, "description": "Max results", "example": "20"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetIdentityVerificationAttributes",
+      "path": "/v1/email/verify-email-identity",
+      "method": "POST",
+      "description": "Verify email identity",
+      "request": {
+        "pathParams": [
+          {"name": "region", "type": "string", "required": true, "description": "AWS region", "example": "us-east-1"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "EmailAddress", "type": "string", "required": true, "description": "Email to verify", "example": "user@example.com"}
+        ]
+      }
+    }
+  ]
+}

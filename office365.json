@@ -1,0 +1,121 @@
+{
+  "name": "office365",
+  "description": "Microsoft Graph API (Office 365) - Email, calendar, and Office integration",
+  "baseURL": "https://graph.microsoft.com/v1.0",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${MSGRAPH_ACCESS_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "SendMail",
+      "path": "/me/sendMail",
+      "method": "POST",
+      "description": "Send an email",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "message", "type": "object", "required": true, "description": "Email message", "example": "{\"subject\": \"Hello\", \"body\": {\"contentType\": \"Text\", \"content\": \"Hello world\"}, \"toRecipients\": [{\"emailAddress\": {\"address\": \"user@example.com\"}}]}"},
+          {"name": "saveToSentItems", "type": "boolean", "required": false, "description": "Save to sent items", "example": "true"}
+        ]
+      }
+    },
+    {
+      "name": "ListMessages",
+      "path": "/me/messages",
+      "method": "GET",
+      "description": "List messages in mailbox",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "$top", "type": "integer", "required": false, "description": "Max messages", "example": "50"},
+          {"name": "$filter", "type": "string", "required": false, "description": "OData filter", "example": "isRead eq false"},
+          {"name": "$orderby", "type": "string", "required": false, "description": "Order by", "example": "receivedDateTime desc"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetMessage",
+      "path": "/me/messages/{message_id}",
+      "method": "GET",
+      "description": "Get a message by ID",
+      "request": {
+        "pathParams": [
+          {"name": "message_id", "type": "string", "required": true, "description": "Message ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListFolders",
+      "path": "/me/mailFolders",
+      "method": "GET",
+      "description": "List mail folders",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "$top", "type": "integer", "required": false, "description": "Max folders", "example": "50"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListCalendars",
+      "path": "/me/calendars",
+      "method": "GET",
+      "description": "List calendars",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListEvents",
+      "path": "/me/events",
+      "method": "GET",
+      "description": "List calendar events",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "$top", "type": "integer", "required": false, "description": "Max events", "example": "50"},
+          {"name": "$filter", "type": "string", "required": false, "description": "OData filter", "example": "start/dateTime ge '2024-01-01'"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateEvent",
+      "path": "/me/events",
+      "method": "POST",
+      "description": "Create calendar event",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "subject", "type": "string", "required": true, "description": "Event subject", "example": "Meeting"},
+          {"name": "start", "type": "object", "required": true, "description": "Start datetime", "example": "{\"dateTime\": \"2024-01-15T09:00:00\", \"timeZone\": \"UTC\"}"},
+          {"name": "end", "type": "object", "required": true, "description": "End datetime", "example": "{\"dateTime\": \"2024-01-15T10:00:00\", \"timeZone\": \"UTC\"}"},
+          {"name": "location", "type": "object", "required": false, "description": "Location", "example": "{\"displayName\": \"Conference Room\"}"},
+          {"name": "attendees", "type": "array", "required": false, "description": "Attendees", "example": "[{\"emailAddress\": {\"address\": \"user@example.com\"}, \"type\": \"required\"}]"}
+        ]
+      }
+    },
+    {
+      "name": "GetUser",
+      "path": "/me",
+      "method": "GET",
+      "description": "Get current user profile",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

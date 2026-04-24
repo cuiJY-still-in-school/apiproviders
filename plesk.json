@@ -1,0 +1,104 @@
+{
+  "name": "plesk",
+  "description": "Plesk API - Website and server management platform",
+  "baseURL": "https://{host}:8443/api/v2",
+  "auth": {
+    "type": "basic",
+    "params": {
+      "username": "${PLESK_USER}",
+      "password": "${PLESK_PASSWORD}"
+    }
+  },
+  "apis": [
+    {
+      "name": "GetServers",
+      "path": "/servers",
+      "method": "GET",
+      "description": "List all servers",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "host", "type": "string", "required": true, "description": "Plesk host", "example": "plesk.example.com"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListDomains",
+      "path": "/domains",
+      "method": "GET",
+      "description": "List all domains",
+      "request": {
+        "pathParams": [
+          {"name": "host", "type": "string", "required": true, "description": "Plesk host", "example": "plesk.example.com"}
+        ],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "50"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Offset", "example": "0"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetDomain",
+      "path": "/domains/{id}",
+      "method": "GET",
+      "description": "Get domain by ID",
+      "request": {
+        "pathParams": [
+          {"name": "host", "type": "string", "required": true, "description": "Plesk host", "example": "plesk.example.com"},
+          {"name": "id", "type": "integer", "required": true, "description": "Domain ID", "example": "1"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListMailAccounts",
+      "path": "/domains/{id}/mail/accounts",
+      "method": "GET",
+      "description": "List mail accounts for domain",
+      "request": {
+        "pathParams": [
+          {"name": "host", "type": "string", "required": true, "description": "Plesk host", "example": "plesk.example.com"},
+          {"name": "id", "type": "integer", "required": true, "description": "Domain ID", "example": "1"}
+        ],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "50"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateMailAccount",
+      "path": "/domains/{id}/mail/accounts",
+      "method": "POST",
+      "description": "Create mail account",
+      "request": {
+        "pathParams": [
+          {"name": "host", "type": "string", "required": true, "description": "Plesk host", "example": "plesk.example.com"},
+          {"name": "id", "type": "integer", "required": true, "description": "Domain ID", "example": "1"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "email", "type": "string", "required": true, "description": "Mailbox email", "example": "user@example.com"},
+          {"name": "password", "type": "string", "required": true, "description": "Mailbox password", "example": "securepassword"}
+        ]
+      }
+    },
+    {
+      "name": "ListDatabases",
+      "path": "/domains/{id}/databases",
+      "method": "GET",
+      "description": "List databases for domain",
+      "request": {
+        "pathParams": [
+          {"name": "host", "type": "string", "required": true, "description": "Plesk host", "example": "plesk.example.com"},
+          {"name": "id", "type": "integer", "required": true, "description": "Domain ID", "example": "1"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "name": "mailchimp",
+  "description": "Mailchimp API - Email marketing automation",
+  "baseURL": "https://{dc}.api.mailchimp.com/3.0",
+  "auth": {
+    "type": "basic",
+    "params": {
+      "username": "anystring",
+      "password": "${MAILCHIMP_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "GetLists",
+      "path": "/lists",
+      "method": "GET",
+      "description": "Get all lists (audiences)",
+      "request": {
+        "pathParams": [
+          {"name": "dc", "type": "string", "required": true, "description": "Data center (e.g., us1, us2)", "example": "us1"}
+        ],
+        "queryParams": [
+          {"name": "count", "type": "integer", "required": false, "description": "Max results", "example": "10"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Offset", "example": "0"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetList",
+      "path": "/lists/{list_id}",
+      "method": "GET",
+      "description": "Get a specific list",
+      "request": {
+        "pathParams": [
+          {"name": "dc", "type": "string", "required": true, "description": "Data center", "example": "us1"},
+          {"name": "list_id", "type": "string", "required": true, "description": "List ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "AddListMember",
+      "path": "/lists/{list_id}/members",
+      "method": "POST",
+      "description": "Add a subscriber to list",
+      "request": {
+        "pathParams": [
+          {"name": "dc", "type": "string", "required": true, "description": "Data center", "example": "us1"},
+          {"name": "list_id", "type": "string", "required": true, "description": "List ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "email_address", "type": "string", "required": true, "description": "Subscriber email", "example": "user@example.com"},
+          {"name": "status", "type": "string", "required": true, "description": "Status: subscribed, pending, unsubscribed", "example": "subscribed"},
+          {"name": "merge_fields", "type": "object", "required": false, "description": "Merge fields", "example": "{\"FNAME\": \"John\", \"LNAME\": \"Doe\"}"}
+        ]
+      }
+    },
+    {
+      "name": "GetListMembers",
+      "path": "/lists/{list_id}/members",
+      "method": "GET",
+      "description": "Get all members in a list",
+      "request": {
+        "pathParams": [
+          {"name": "dc", "type": "string", "required": true, "description": "Data center", "example": "us1"},
+          {"name": "list_id", "type": "string", "required": true, "description": "List ID", "example": "abc123"}
+        ],
+        "queryParams": [
+          {"name": "count", "type": "integer", "required": false, "description": "Max results", "example": "100"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Offset", "example": "0"},
+          {"name": "status", "type": "string", "required": false, "description": "Filter by status", "example": "subscribed"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateCampaign",
+      "path": "/campaigns",
+      "method": "POST",
+      "description": "Create a new campaign",
+      "request": {
+        "pathParams": [
+          {"name": "dc", "type": "string", "required": true, "description": "Data center", "example": "us1"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "type", "type": "string", "required": true, "description": "Campaign type: regular, plaintext, absplit, rss, variate", "example": "regular"},
+          {"name": "recipients", "type": "object", "required": false, "description": "Recipient list", "example": "{\"list_id\": \"abc123\"}"},
+          {"name": "settings", "type": "object", "required": true, "description": "Campaign settings", "example": "{\"subject_line\": \"Hello\", \"from_name\": \"Sender\", \"reply_to\": \"sender@example.com\"}"}
+        ]
+      }
+    },
+    {
+      "name": "SendCampaign",
+      "path": "/campaigns/{campaign_id}/actions/send",
+      "method": "POST",
+      "description": "Send a campaign",
+      "request": {
+        "pathParams": [
+          {"name": "dc", "type": "string", "required": true, "description": "Data center", "example": "us1"},
+          {"name": "campaign_id", "type": "string", "required": true, "description": "Campaign ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetReports",
+      "path": "/reports",
+      "method": "GET",
+      "description": "Get campaign reports",
+      "request": {
+        "pathParams": [
+          {"name": "dc", "type": "string", "required": true, "description": "Data center", "example": "us1"}
+        ],
+        "queryParams": [
+          {"name": "count", "type": "integer", "required": false, "description": "Max results", "example": "20"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Offset", "example": "0"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

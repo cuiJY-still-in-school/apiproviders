@@ -1,0 +1,62 @@
+{
+  "name": "smtp2go",
+  "description": "SMTP2GO API - Email sending service",
+  "baseURL": "https://api.smtp2go.com/v3",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${SMTP2GO_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "SendEmail",
+      "path": "/email/send",
+      "method": "POST",
+      "description": "Send an email",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "api_key", "type": "string", "required": true, "description": "SMTP2GO API key", "example": "your_api_key"},
+          {"name": "sender", "type": "string", "required": true, "description": "Sender name and email", "example": "Sender <sender@example.com>"},
+          {"name": "to", "type": "array", "required": true, "description": "Recipients", "example": "[\"user@example.com\"]"},
+          {"name": "subject", "type": "string", "required": true, "description": "Email subject", "example": "Hello from SMTP2GO!"},
+          {"name": "html_body", "type": "string", "required": false, "description": "HTML body", "example": "<h1>Hello</h1>"},
+          {"name": "text_body", "type": "string", "required": false, "description": "Plain text body", "example": "Hello text"},
+          {"name": "cc", "type": "array", "required": false, "description": "CC recipients", "example": "[\"cc@example.com\"]"},
+          {"name": "bcc", "type": "array", "required": false, "description": "BCC recipients", "example": "[\"bcc@example.com\"]"}
+        ]
+      }
+    },
+    {
+      "name": "SendBulkEmail",
+      "path": "/email/bulk_send",
+      "method": "POST",
+      "description": "Send bulk/batch emails",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "api_key", "type": "string", "required": true, "description": "SMTP2GO API key", "example": "your_api_key"},
+          {"name": " emails", "type": "array", "required": true, "description": "Array of email objects", "example": "[{\"to\": [\"user@example.com\"], \"sender\": \"sender@example.com\", \"subject\": \"Hello\", \"html_body\": \"<h1>Hello</h1>\"}]"}
+        ]
+      }
+    },
+    {
+      "name": "GetStats",
+      "path": "/stats",
+      "method": "GET",
+      "description": "Get sending statistics",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "api_key", "type": "string", "required": true, "description": "SMTP2GO API key", "example": "your_api_key"},
+          {"name": "start_date", "type": "string", "required": false, "description": "Start date (YYYY-MM-DD)", "example": "2024-01-01"},
+          {"name": "end_date", "type": "string", "required": false, "description": "End date (YYYY-MM-DD)", "example": "2024-01-31"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

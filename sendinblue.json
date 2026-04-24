@@ -1,0 +1,104 @@
+{
+  "name": "sendinblue",
+  "description": "SendinBlue API - Email and SMS marketing platform",
+  "baseURL": "https://api.sendinblue.com/v3",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${SENDINBLUE_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "SendEmail",
+      "path": "/smtp/email",
+      "method": "POST",
+      "description": "Send a transactional email",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "sender", "type": "object", "required": true, "description": "Sender info", "example": "{\"name\": \"Sender\", \"email\": \"sender@example.com\"}"},
+          {"name": "to", "type": "array", "required": true, "description": "Recipients", "example": "[{\"email\": \"user@example.com\", \"name\": \"User\"}]"},
+          {"name": "subject", "type": "string", "required": true, "description": "Email subject", "example": "Hello from SendinBlue!"},
+          {"name": "htmlContent", "type": "string", "required": false, "description": "HTML body", "example": "<h1>Hello</h1>"},
+          {"name": "textContent", "type": "string", "required": false, "description": "Plain text body", "example": "Hello text"},
+          {"name": "cc", "type": "array", "required": false, "description": "CC recipients", "example": "[{\"email\": \"cc@example.com\"}]"},
+          {"name": "bcc", "type": "array", "required": false, "description": "BCC recipients", "example": "[{\"email\": \"bcc@example.com\"}]"}
+        ]
+      }
+    },
+    {
+      "name": "GetEmailReport",
+      "path": "/smtp/statistics",
+      "method": "GET",
+      "description": "Get email statistics",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "startDate", "type": "string", "required": false, "description": "Start date (YYYY-MM-DD)", "example": "2024-01-01"},
+          {"name": "endDate", "type": "string", "required": false, "description": "End date (YYYY-MM-DD)", "example": "2024-01-31"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetSmtpTemplates",
+      "path": "/smtp/templates",
+      "method": "GET",
+      "description": "List SMTP templates",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "50"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Offset", "example": "0"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateContact",
+      "path": "/contacts",
+      "method": "POST",
+      "description": "Create or update a contact",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "email", "type": "string", "required": true, "description": "Contact email", "example": "user@example.com"},
+          {"name": "attributes", "type": "object", "required": false, "description": "Custom attributes", "example": "{\"FIRSTNAME\": \"John\", \"LASTNAME\": \"Doe\"}"},
+          {"name": "listIds", "type": "array", "required": false, "description": "List IDs to add to", "example": "[\"list1\"]"}
+        ]
+      }
+    },
+    {
+      "name": "GetContacts",
+      "path": "/contacts",
+      "method": "GET",
+      "description": "List contacts",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "50"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Offset", "example": "0"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "SendSMS",
+      "path": "/sms/send",
+      "method": "POST",
+      "description": "Send SMS",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "sender", "type": "string", "required": true, "description": "Sender name/number", "example": "Sender"},
+          {"name": "recipient", "type": "string", "required": true, "description": "Recipient phone", "example": "1234567890"},
+          {"name": "content", "type": "string", "required": true, "description": "SMS content", "example": "Hello from SendinBlue!"}
+        ]
+      }
+    }
+  ]
+}

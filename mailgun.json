@@ -1,0 +1,81 @@
+{
+  "name": "mailgun",
+  "description": "Mailgun API - Transactional email API for developers",
+  "baseURL": "https://api.mailgun.net/v3",
+  "auth": {
+    "type": "basic",
+    "params": {
+      "username": "api",
+      "password": "${MAILGUN_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "SendMessage",
+      "path": "/{domain}/messages",
+      "method": "POST",
+      "description": "Send an email",
+      "request": {
+        "pathParams": [
+          {"name": "domain", "type": "string", "required": true, "description": "Domain name", "example": "mg.example.com"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "from", "type": "string", "required": true, "description": "Sender address", "example": "Sender <sender@mg.example.com>"},
+          {"name": "to", "type": "string", "required": true, "description": "Recipient address(es)", "example": "user@example.com"},
+          {"name": "subject", "type": "string", "required": true, "description": "Email subject", "example": "Hello from Mailgun!"},
+          {"name": "text", "type": "string", "required": false, "description": "Plain text body", "example": "This is the email body"},
+          {"name": "html", "type": "string", "required": false, "description": "HTML body", "example": "<h1>Hello</h1>"},
+          {"name": "cc", "type": "string", "required": false, "description": "CC recipient", "example": "cc@example.com"},
+          {"name": "bcc", "type": "string", "required": false, "description": "BCC recipient", "example": "bcc@example.com"}
+        ]
+      }
+    },
+    {
+      "name": "GetMessages",
+      "path": "/{domain}/messages",
+      "method": "GET",
+      "description": "Get queued messages",
+      "request": {
+        "pathParams": [
+          {"name": "domain", "type": "string", "required": true, "description": "Domain name", "example": "mg.example.com"}
+        ],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "20"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListDomains",
+      "path": "/domains",
+      "method": "GET",
+      "description": "List your domains",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "20"},
+          {"name": "skip", "type": "integer", "required": false, "description": "Skip results", "example": "0"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetStats",
+      "path": "/{domain}/stats",
+      "method": "GET",
+      "description": "Get domain statistics",
+      "request": {
+        "pathParams": [
+          {"name": "domain", "type": "string", "required": true, "description": "Domain name", "example": "mg.example.com"}
+        ],
+        "queryParams": [
+          {"name": "start", "type": "string", "required": false, "description": "Start date (YYYY-MM-DD)", "example": "2024-01-01"},
+          {"name": "end", "type": "string", "required": false, "description": "End date (YYYY-MM-DD)", "example": "2024-01-31"},
+          {"name": "resolution", "type": "string", "required": false, "description": "Timezone: hour, day, month", "example": "day"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

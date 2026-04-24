@@ -1,0 +1,101 @@
+{
+  "name": "postmark",
+  "description": "Postmark API - Transactional email service",
+  "baseURL": "https://api.postmarkapp.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${POSTMARK_API_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "SendEmail",
+      "path": "/email",
+      "method": "POST",
+      "description": "Send a single email",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "From", "type": "string", "required": true, "description": "Sender email", "example": "sender@example.com"},
+          {"name": "To", "type": "string", "required": true, "description": "Recipient email", "example": "user@example.com"},
+          {"name": "Subject", "type": "string", "required": true, "description": "Email subject", "example": "Hello from Postmark!"},
+          {"name": "TextBody", "type": "string", "required": false, "description": "Plain text body", "example": "Email body text"},
+          {"name": "HtmlBody", "type": "string", "required": false, "description": "HTML body", "example": "<h1>Hello</h1>"},
+          {"name": "Cc", "type": "string", "required": false, "description": "CC recipient", "example": "cc@example.com"},
+          {"name": "Bcc", "type": "string", "required": false, "description": "BCC recipient", "example": "bcc@example.com"},
+          {"name": "Tag", "type": "string", "required": false, "description": "Email tag for tracking", "example": "welcome"}
+        ]
+      }
+    },
+    {
+      "name": "SendEmails",
+      "path": "/email/batch",
+      "method": "POST",
+      "description": "Send multiple emails in batch",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "Messages", "type": "array", "required": true, "description": "Array of email messages", "example": "[{\"From\": \"sender@example.com\", \"To\": \"user@example.com\", \"Subject\": \"Hello\", \"TextBody\": \"Body\"}]"}
+        ]
+      }
+    },
+    {
+      "name": "GetDeliveryStats",
+      "path": "/email/deliverability/stats",
+      "method": "GET",
+      "description": "Get email delivery statistics",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "fromdate", "type": "string", "required": false, "description": "Start date", "example": "2024-01-01"},
+          {"name": "todate", "type": "string", "required": false, "description": "End date", "example": "2024-01-31"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetMessage",
+      "path": "/messages/{messageID}",
+      "method": "GET",
+      "description": "Get email message details",
+      "request": {
+        "pathParams": [
+          {"name": "messageID", "type": "integer", "required": true, "description": "Message ID", "example": "12345678"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "GetBounce",
+      "path": "/bounces/{bounceID}",
+      "method": "GET",
+      "description": "Get bounce details",
+      "request": {
+        "pathParams": [
+          {"name": "bounceID", "type": "integer", "required": true, "description": "Bounce ID", "example": "123456"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ListBounces",
+      "path": "/bounces",
+      "method": "GET",
+      "description": "List bounces",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "count", "type": "integer", "required": false, "description": "Max results", "example": "100"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Offset for pagination", "example": "0"},
+          {"name": "type", "type": "string", "required": false, "description": "Bounce type filter", "example": "HardBounce"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

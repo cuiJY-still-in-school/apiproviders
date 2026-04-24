@@ -1,0 +1,109 @@
+{
+  "name": "gmail",
+  "description": "Gmail API (via Google Workspace) - Email service",
+  "baseURL": "https://gmail.googleapis.com/gmail/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${GMAIL_ACCESS_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ListMessages",
+      "path": "/users/me/messages",
+      "method": "GET",
+      "description": "List messages in mailbox",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "maxResults", "type": "integer", "required": false, "description": "Max results", "example": "50"},
+          {"name": "q", "type": "string", "required": false, "description": "Search query", "example": "is:unread"},
+          {"name": "pageToken", "type": "string", "required": false, "description": "Pagination token", "example": "xxx"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GetMessage",
+      "path": "/users/me/messages/{messageId}",
+      "method": "GET",
+      "description": "Get message by ID",
+      "request": {
+        "pathParams": [
+          {"name": "messageId", "type": "string", "required": true, "description": "Message ID", "example": "abc123"}
+        ],
+        "queryParams": [
+          {"name": "format", "type": "string", "required": false, "description": "Format: full, metadata, raw", "example": "full"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "SendMessage",
+      "path": "/users/me/messages/send",
+      "method": "POST",
+      "description": "Send an email",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "raw", "type": "string", "required": true, "description": "Base64url encoded email", "example": "base64url_encoded_message"}
+        ]
+      }
+    },
+    {
+      "name": "ListLabels",
+      "path": "/users/me/labels",
+      "method": "GET",
+      "description": "List all labels",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ModifyMessage",
+      "path": "/users/me/messages/{messageId}/modify",
+      "method": "POST",
+      "description": "Modify message (add/remove labels)",
+      "request": {
+        "pathParams": [
+          {"name": "messageId", "type": "string", "required": true, "description": "Message ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "addLabelIds", "type": "array", "required": false, "description": "Labels to add", "example": "[\"STARRED\"]"},
+          {"name": "removeLabelIds", "type": "array", "required": false, "description": "Labels to remove", "example": "[\"INBOX\"]"}
+        ]
+      }
+    },
+    {
+      "name": "TrashMessage",
+      "path": "/users/me/messages/{messageId}/trash",
+      "method": "POST",
+      "description": "Move message to trash",
+      "request": {
+        "pathParams": [
+          {"name": "messageId", "type": "string", "required": true, "description": "Message ID", "example": "abc123"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "BatchDelete",
+      "path": "/users/me/messages/batchDelete",
+      "method": "POST",
+      "description": "Delete multiple messages",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "ids", "type": "array", "required": true, "description": "Message IDs to delete", "example": "[\"msg1\", \"msg2\"]"}
+        ]
+      }
+    }
+  ]
+}

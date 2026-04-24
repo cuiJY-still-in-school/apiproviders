@@ -1,0 +1,61 @@
+{
+  "name": "brave-search",
+  "description": "Brave Search API - Privacy-respecting web search",
+  "baseURL": "https://api.search.brave.com/res/v1",
+  "auth": {
+    "type": "header",
+    "params": {
+      "header": "X-Subscription-Token",
+      "value": "${BRAVE_SEARCH_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "WebSearch",
+      "path": "/web/search",
+      "method": "GET",
+      "description": "Search the web",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "q", "type": "string", "required": true, "description": "Search query", "example": "golang web framework"},
+          {"name": "count", "type": "integer", "required": false, "description": "Number of results (1-20)", "example": "10"},
+          {"name": "offset", "type": "integer", "required": false, "description": "Result offset for pagination", "example": "0"},
+          {"name": "freshness", "type": "string", "required": false, "description": "Time filter: pd (day), pw (week), pm (month), py (year)", "example": "pw"},
+          {"name": "safesearch", "type": "string", "required": false, "description": "Adult content filter: off, moderate, strict", "example": "moderate"},
+          {"name": "country", "type": "string", "required": false, "description": "Country code (e.g., US, CN)", "example": "US"},
+          {"name": "search_lang", "type": "string", "required": false, "description": "Language code", "example": "en"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "NewsSearch",
+      "path": "/news/search",
+      "method": "GET",
+      "description": "Search news",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "q", "type": "string", "required": true, "description": "Search query", "example": "AI technology"},
+          {"name": "count", "type": "integer", "required": false, "description": "Number of results", "example": "10"},
+          {"name": "freshness", "type": "string", "required": false, "description": "Time filter: pd, pw, pm, py", "example": "pd"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "Suggestions",
+      "path": "/suggest/search",
+      "method": "GET",
+      "description": "Get search suggestions",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "q", "type": "string", "required": true, "description": "Search query", "example": "pytho"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

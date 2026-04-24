@@ -1,0 +1,62 @@
+{
+  "name": "tavily",
+  "description": "Tavily AI Search API - Real-time web search for AI agents",
+  "baseURL": "https://api.tavily.com",
+  "auth": {
+    "type": "apikey",
+    "params": {
+      "api_key": "${TAVILY_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "Search",
+      "path": "/search",
+      "method": "POST",
+      "description": "Search the web with AI-optimized results",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "query", "type": "string", "required": true, "description": "Search query", "example": "latest AI news"},
+          {"name": "api_key", "type": "string", "required": true, "description": "Your Tavily API key", "example": "tvly-xxxxx"},
+          {"name": "search_depth", "type": "string", "required": false, "description": "Search depth: basic or advanced", "example": "basic"},
+          {"name": "topic", "type": "string", "required": false, "description": "Topic filter: news, sports, finance, etc.", "example": "news"},
+          {"name": "days", "type": "integer", "required": false, "description": "Number of days to look back", "example": "7"},
+          {"name": "max_results", "type": "integer", "required": false, "description": "Maximum number of results", "example": "10"}
+        ]
+      }
+    },
+    {
+      "name": "SearchDeep",
+      "path": "/search",
+      "method": "POST",
+      "description": "Advanced deep search with more context",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "query", "type": "string", "required": true, "description": "Search query", "example": "machine learning trends"},
+          {"name": "api_key", "type": "string", "required": true, "description": "Your Tavily API key", "example": "tvly-xxxxx"},
+          {"name": "search_depth", "type": "string", "required": false, "description": "Search depth: basic or advanced", "example": "advanced"},
+          {"name": "max_results", "type": "integer", "required": false, "description": "Maximum number of results", "example": "20"}
+        ]
+      }
+    },
+    {
+      "name": "GetSearchContext",
+      "path": "/search_context",
+      "method": "POST",
+      "description": "Get search results with full context",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "query", "type": "string", "required": true, "description": "Search query", "example": "AI regulations"},
+          {"name": "api_key", "type": "string", "required": true, "description": "Your Tavily API key", "example": "tvly-xxxxx"},
+          {"name": "max_results", "type": "integer", "required": false, "description": "Maximum number of results", "example": "10"}
+        ]
+      }
+    }
+  ]
+}

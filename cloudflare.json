@@ -17,9 +17,27 @@
       "request": {
         "pathParams": [],
         "queryParams": [
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"},
-          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"},
-          {"name": "name", "type": "string", "required": false, "description": "Filter by domain name", "example": "example.com"}
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "required": false,
+            "description": "Page number",
+            "example": "1"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "Filter by domain name",
+            "example": "example.com"
+          }
         ],
         "body": []
       }
@@ -31,12 +49,36 @@
       "description": "List DNS records in a zone",
       "request": {
         "pathParams": [
-          {"name": "zone_id", "type": "string", "required": true, "description": "Zone ID", "example": "zone_xxx"}
+          {
+            "name": "zone_id",
+            "type": "string",
+            "required": true,
+            "description": "Zone ID",
+            "example": "zone_xxx"
+          }
         ],
         "queryParams": [
-          {"name": "type", "type": "string", "required": false, "description": "Record type: A, AAAA, CNAME, TXT", "example": "A"},
-          {"name": "name", "type": "string", "required": false, "description": "Filter by name", "example": "www"},
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+          {
+            "name": "type",
+            "type": "string",
+            "required": false,
+            "description": "Record type: A, AAAA, CNAME, TXT",
+            "example": "A"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "Filter by name",
+            "example": "www"
+          },
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          }
         ],
         "body": []
       }
@@ -48,15 +90,51 @@
       "description": "Create a DNS record",
       "request": {
         "pathParams": [
-          {"name": "zone_id", "type": "string", "required": true, "description": "Zone ID", "example": "zone_xxx"}
+          {
+            "name": "zone_id",
+            "type": "string",
+            "required": true,
+            "description": "Zone ID",
+            "example": "zone_xxx"
+          }
         ],
         "queryParams": [],
         "body": [
-          {"name": "type", "type": "string", "required": true, "description": "Record type: A, AAAA, CNAME, TXT, MX", "example": "A"},
-          {"name": "name", "type": "string", "required": true, "description": "Record name", "example": "www"},
-          {"name": "content", "type": "string", "required": true, "description": "Record value", "example": "1.2.3.4"},
-          {"name": "ttl", "type": "integer", "required": false, "description": "TTL (auto: 1)", "example": "3600"},
-          {"name": "proxied", "type": "boolean", "required": false, "description": "Enable Cloudflare proxy", "example": "true"}
+          {
+            "name": "type",
+            "type": "string",
+            "required": true,
+            "description": "Record type: A, AAAA, CNAME, TXT, MX",
+            "example": "A"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "description": "Record name",
+            "example": "www"
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "required": true,
+            "description": "Record value",
+            "example": "1.2.3.4"
+          },
+          {
+            "name": "ttl",
+            "type": "integer",
+            "required": false,
+            "description": "TTL (auto: 1)",
+            "example": "3600"
+          },
+          {
+            "name": "proxied",
+            "type": "boolean",
+            "required": false,
+            "description": "Enable Cloudflare proxy",
+            "example": "true"
+          }
         ]
       }
     },
@@ -67,8 +145,20 @@
       "description": "Delete a DNS record",
       "request": {
         "pathParams": [
-          {"name": "zone_id", "type": "string", "required": true, "description": "Zone ID", "example": "zone_xxx"},
-          {"name": "record_id", "type": "string", "required": true, "description": "Record ID", "example": "rec_xxx"}
+          {
+            "name": "zone_id",
+            "type": "string",
+            "required": true,
+            "description": "Zone ID",
+            "example": "zone_xxx"
+          },
+          {
+            "name": "record_id",
+            "type": "string",
+            "required": true,
+            "description": "Record ID",
+            "example": "rec_xxx"
+          }
         ],
         "queryParams": [],
         "body": []
@@ -81,7 +171,13 @@
       "description": "List Workers scripts",
       "request": {
         "pathParams": [
-          {"name": "account_id", "type": "string", "required": true, "description": "Account ID", "example": "account_xxx"}
+          {
+            "name": "account_id",
+            "type": "string",
+            "required": true,
+            "description": "Account ID",
+            "example": "account_xxx"
+          }
         ],
         "queryParams": [],
         "body": []
@@ -94,14 +190,108 @@
       "description": "Get zone analytics",
       "request": {
         "pathParams": [
-          {"name": "zone_id", "type": "string", "required": true, "description": "Zone ID", "example": "zone_xxx"}
+          {
+            "name": "zone_id",
+            "type": "string",
+            "required": true,
+            "description": "Zone ID",
+            "example": "zone_xxx"
+          }
         ],
         "queryParams": [
-          {"name": "since", "type": "integer", "required": false, "description": "Start time (Unix timestamp)", "example": "1609459200"},
-          {"name": "until", "type": "integer", "required": false, "description": "End time (Unix timestamp)", "example": "1609545600"}
+          {
+            "name": "since",
+            "type": "integer",
+            "required": false,
+            "description": "Start time (Unix timestamp)",
+            "example": "1609459200"
+          },
+          {
+            "name": "until",
+            "type": "integer",
+            "required": false,
+            "description": "End time (Unix timestamp)",
+            "example": "1609545600"
+          }
         ],
         "body": []
       }
     }
+  ],
+  "models": [
+    "workers-ai/@cf/myshell-ai/melotts",
+    "workers-ai/@cf/ibm-granite/granite-4.0-h-micro",
+    "workers-ai/@cf/huggingface/distilbert-sst-2-int8",
+    "workers-ai/@cf/zai-org/glm-4.7-flash",
+    "workers-ai/@cf/pipecat-ai/smart-turn-v2",
+    "workers-ai/@cf/mistralai/mistral-small-3.1-24b-instruct",
+    "workers-ai/@cf/facebook/bart-large-cnn",
+    "workers-ai/@cf/aisingapore/gemma-sea-lion-v4-27b-it",
+    "workers-ai/@cf/nvidia/nemotron-3-120b-a12b",
+    "workers-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+    "workers-ai/@cf/openai/gpt-oss-20b",
+    "workers-ai/@cf/openai/gpt-oss-120b",
+    "workers-ai/@cf/mistral/mistral-7b-instruct-v0.1",
+    "workers-ai/@cf/meta/llama-4-scout-17b-16e-instruct",
+    "workers-ai/@cf/meta/llama-3-8b-instruct-awq",
+    "workers-ai/@cf/meta/llama-guard-3-8b",
+    "workers-ai/@cf/meta/m2m100-1.2b",
+    "workers-ai/@cf/meta/llama-2-7b-chat-fp16",
+    "workers-ai/@cf/meta/llama-3.2-11b-vision-instruct",
+    "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "workers-ai/@cf/meta/llama-3.2-1b-instruct",
+    "workers-ai/@cf/meta/llama-3.1-8b-instruct-fp8",
+    "workers-ai/@cf/meta/llama-3.2-3b-instruct",
+    "workers-ai/@cf/meta/llama-3.1-8b-instruct-awq",
+    "workers-ai/@cf/meta/llama-3-8b-instruct",
+    "workers-ai/@cf/meta/llama-3.1-8b-instruct",
+    "workers-ai/@cf/qwen/qwen2.5-coder-32b-instruct",
+    "workers-ai/@cf/qwen/qwen3-embedding-0.6b",
+    "workers-ai/@cf/qwen/qwq-32b",
+    "workers-ai/@cf/qwen/qwen3-30b-a3b-fp8",
+    "workers-ai/@cf/google/gemma-3-12b-it",
+    "workers-ai/@cf/moonshotai/kimi-k2.5",
+    "workers-ai/@cf/moonshotai/kimi-k2.6",
+    "workers-ai/@cf/ai4bharat/indictrans2-en-indic-1B",
+    "workers-ai/@cf/pfnet/plamo-embedding-1b",
+    "workers-ai/@cf/baai/bge-small-en-v1.5",
+    "workers-ai/@cf/baai/bge-large-en-v1.5",
+    "workers-ai/@cf/baai/bge-reranker-base",
+    "workers-ai/@cf/baai/bge-base-en-v1.5",
+    "workers-ai/@cf/baai/bge-m3",
+    "workers-ai/@cf/deepgram/aura-2-en",
+    "workers-ai/@cf/deepgram/aura-2-es",
+    "workers-ai/@cf/deepgram/nova-3",
+    "openai/gpt-5.3-codex",
+    "openai/gpt-4-turbo",
+    "openai/gpt-5.2",
+    "openai/o3-pro",
+    "openai/gpt-4o-mini",
+    "openai/o4-mini",
+    "openai/gpt-5.2-codex",
+    "openai/gpt-5.1",
+    "openai/o1",
+    "openai/gpt-3.5-turbo",
+    "openai/o3-mini",
+    "openai/gpt-4",
+    "openai/gpt-5.4",
+    "openai/o3",
+    "openai/gpt-4o",
+    "openai/gpt-5.1-codex",
+    "anthropic/claude-haiku-4-5",
+    "anthropic/claude-sonnet-4-6",
+    "anthropic/claude-opus-4-7",
+    "anthropic/claude-opus-4-1",
+    "anthropic/claude-3-5-haiku",
+    "anthropic/claude-3.5-sonnet",
+    "anthropic/claude-sonnet-4",
+    "anthropic/claude-opus-4-5",
+    "anthropic/claude-3-haiku",
+    "anthropic/claude-opus-4",
+    "anthropic/claude-opus-4-6",
+    "anthropic/claude-3.5-haiku",
+    "anthropic/claude-sonnet-4-5",
+    "anthropic/claude-3-sonnet",
+    "anthropic/claude-3-opus"
   ]
 }

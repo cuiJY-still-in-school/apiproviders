@@ -1,0 +1,40 @@
+{
+  "name": "openrouter",
+  "description": "OpenRouter API - Unified access to 100+ AI models",
+  "baseURL": "https://openrouter.ai/api/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${OPENROUTER_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ChatCompletions",
+      "path": "/chat/completions",
+      "method": "POST",
+      "description": "Chat completion with OpenRouter models",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model name (e.g., openai/gpt-4o, anthropic/claude-3.5-sonnet)", "example": "openai/gpt-4o"},
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+        ]
+      }
+    },
+    {
+      "name": "ListModels",
+      "path": "/models",
+      "method": "GET",
+      "description": "List all available models",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

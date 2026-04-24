@@ -1,0 +1,47 @@
+{
+  "name": "wechat",
+  "description": "企业微信 API - 腾讯企业通讯",
+  "baseURL": "https://qyapi.weixin.qq.com/cgi-bin",
+  "docsURL": "https://developer.work.weixin.qq.com/document/",
+  "auth": {
+    "type": "wechat",
+    "params": {
+      "corpid": "${WECHAT_WORK_CORP_ID}",
+      "corpsecret": "${WECHAT_WORK_CORP_SECRET}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "GetAccessToken",
+      "path": "/gettoken",
+      "method": "GET",
+      "description": "获取访问令牌",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "corpid", "type": "string", "required": true, "description": "企业 ID", "example": "wwxxx"},
+          {"name": "corpsecret", "type": "string", "required": true, "description": "应用密钥", "example": "xxx"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "SendMessage",
+      "path": "/message/send",
+      "method": "POST",
+      "description": "发送消息",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "touser", "type": "string", "required": true, "description": "成员 ID", "example": "user1"},
+          {"name": "toparty", "type": "string", "required": false, "description": "部门 ID", "example": "1"},
+          {"name": "msgtype", "type": "string", "required": true, "description": "消息类型", "example": "text"},
+          {"name": "agentid", "type": "integer", "required": true, "description": "应用 ID", "example": 1000001},
+          {"name": "text", "type": "object", "required": true, "description": "文本消息", "example": "{\"content\":\"Hello\"}"}
+        ]
+      }
+    }
+  ]
+}

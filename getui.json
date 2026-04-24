@@ -1,0 +1,31 @@
+{
+  "name": "getui",
+  "description": "个推 API - 中国推送服务",
+  "baseURL": "https://restapi.getui.com/v2",
+  "docsURL": "https://docs.getui.com/",
+  "auth": {
+    "type": "getui",
+    "params": {
+      "appId": "${GETUI_APP_ID}",
+      "appKey": "${GETUI_APP_KEY}",
+      "masterSecret": "${GETUI_MASTER_SECRET}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "PushToSingle",
+      "path": "/{appId}/push/single/cid",
+      "method": "POST",
+      "description": "推送单个用户",
+      "request": {
+        "pathParams": [{"name": "appId", "type": "string", "required": true, "description": "应用 ID", "example": "xxx"}],
+        "queryParams": [],
+        "body": [
+          {"name": "cid", "type": "string", "required": true, "description": "客户端 ID", "example": "xxx"},
+          {"name": "pushChannel", "type": "object", "required": true, "description": "推送通道", "example": "{\"ios\":{\"type\":\"notify\",\"payload\":\"test\"}}"}
+        ]
+      }
+    }
+  ]
+}

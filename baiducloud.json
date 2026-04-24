@@ -1,0 +1,30 @@
+{
+  "name": "baiducloud",
+  "description": "百度智能云 API - BCC、云存储等",
+  "baseURL": "https://bcc.baidubce.com",
+  "docsURL": "https://cloud.baidu.com/doc/BCC/index.html",
+  "auth": {
+    "type": "bce",
+    "params": {
+      "accessKeyId": "${BAIDU_CLOUD_AK}",
+      "secretAccessKey": "${BAIDU_CLOUD_SK}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "ListInstances",
+      "path": "/v2/instance",
+      "method": "GET",
+      "description": "查询云服务器实例",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "maxKeys", "type": "integer", "required": false, "description": "返回数量", "example": "10"},
+          {"name": "marker", "type": "string", "required": false, "description": "翻页标记", "example": ""}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

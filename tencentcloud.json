@@ -1,0 +1,30 @@
+{
+  "name": "tencentcloud",
+  "description": "腾讯云 API - CVM、云存储等",
+  "baseURL": "https://cvm.tencentcloudapi.com",
+  "docsURL": "https://cloud.tencent.com/document/product/213",
+  "auth": {
+    "type": "secretid",
+    "params": {
+      "secretId": "${TENCENTCLOUD_SECRET_ID}",
+      "secretKey": "${TENCENTCLOUD_SECRET_KEY}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "DescribeInstances",
+      "path": "/",
+      "method": "POST",
+      "description": "查询云服务器 CVM 实例",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "Limit", "type": "integer", "required": false, "description": "返回数量", "example": "10"},
+          {"name": "Offset", "type": "integer", "required": false, "description": "偏移量", "example": "0"}
+        ]
+      }
+    }
+  ]
+}

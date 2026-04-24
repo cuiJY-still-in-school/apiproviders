@@ -8,6 +8,59 @@
       "token": "${OPENAI_API_KEY}"
     }
   },
+  "models": [
+    "gpt-5.1-codex-max",
+    "gpt-4o-2024-05-13",
+    "o1-mini",
+    "gpt-5.2-pro",
+    "text-embedding-3-large",
+    "gpt-5.3-chat-latest",
+    "gpt-5.5",
+    "gpt-5-mini",
+    "gpt-5-nano",
+    "gpt-5.3-codex",
+    "gpt-4-turbo",
+    "text-embedding-ada-002",
+    "gpt-5.2",
+    "o3-pro",
+    "gpt-4o-mini",
+    "o4-mini-deep-research",
+    "gpt-5.4-mini",
+    "o4-mini",
+    "gpt-5.4-nano",
+    "gpt-image-1",
+    "gpt-5.2-codex",
+    "gpt-5.2-chat-latest",
+    "gpt-5.1-codex-mini",
+    "o1-preview",
+    "gpt-4o-2024-08-06",
+    "gpt-5.1",
+    "gpt-image-1-mini",
+    "o1",
+    "gpt-5.4-pro",
+    "gpt-3.5-turbo",
+    "o3-deep-research",
+    "o3-mini",
+    "text-embedding-3-small",
+    "o1-pro",
+    "gpt-4",
+    "gpt-5-codex",
+    "gpt-5.4",
+    "gpt-5.1-chat-latest",
+    "gpt-5.3-codex-spark",
+    "chatgpt-image-latest",
+    "gpt-4.1-nano",
+    "o3",
+    "gpt-5-pro",
+    "gpt-4o",
+    "gpt-5",
+    "gpt-5-chat-latest",
+    "gpt-image-1.5",
+    "gpt-4.1",
+    "gpt-4.1-mini",
+    "gpt-5.1-codex",
+    "gpt-4o-2024-11-20"
+  ],
   "apis": [
     {
       "name": "ChatCompletions",
@@ -18,11 +71,41 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: gpt-4o, gpt-4o-mini, gpt-3.5-turbo", "example": "gpt-4o-mini"},
-          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1000"},
-          {"name": "stream", "type": "boolean", "required": false, "description": "Enable streaming", "example": "false"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: gpt-4o, gpt-4o-mini, gpt-3.5-turbo",
+            "example": "gpt-4o-mini"
+          },
+          {
+            "name": "messages",
+            "type": "array",
+            "required": true,
+            "description": "Message array",
+            "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-2)",
+            "example": "0.7"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "1000"
+          },
+          {
+            "name": "stream",
+            "type": "boolean",
+            "required": false,
+            "description": "Enable streaming",
+            "example": "false"
+          }
         ]
       }
     },
@@ -35,10 +118,34 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: text-davinci-003", "example": "text-davinci-003"},
-          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: text-davinci-003",
+            "example": "text-davinci-003"
+          },
+          {
+            "name": "prompt",
+            "type": "string",
+            "required": true,
+            "description": "Prompt text",
+            "example": "Once upon a time"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "100"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-2)",
+            "example": "0.7"
+          }
         ]
       }
     },
@@ -51,8 +158,20 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: text-embedding-3-small, text-embedding-3-large", "example": "text-embedding-3-small"},
-          {"name": "input", "type": "string", "required": true, "description": "Input text", "example": "The food was delicious"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: text-embedding-3-small, text-embedding-3-large",
+            "example": "text-embedding-3-small"
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "required": true,
+            "description": "Input text",
+            "example": "The food was delicious"
+          }
         ]
       }
     },

@@ -1,0 +1,57 @@
+{
+  "name": "dingtalk",
+  "description": "钉钉 API - 阿里企业通讯",
+  "baseURL": "https://api.dingtalk.com",
+  "docsURL": "https://open.dingtalk.com/document/",
+  "auth": {
+    "type": "dingtalk",
+    "params": {
+      "appKey": "${DINGTALK_APP_KEY}",
+      "appSecret": "${DINGTALK_APP_SECRET}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "GetAccessToken",
+      "path": "/v1.0/oauth2/accessToken",
+      "method": "POST",
+      "description": "获取访问令牌 (OAuth2)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "appKey", "type": "string", "required": true, "description": "应用的 AppKey", "example": "dingxxx"},
+          {"name": "appSecret", "type": "string", "required": true, "description": "应用的 AppSecret", "example": "xxx"}
+        ]
+      }
+    },
+    {
+      "name": "SendMessage",
+      "path": "/v1.0/im/messages",
+      "method": "POST",
+      "description": "发送消息",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "robotCode", "type": "string", "required": true, "description": "机器人 Code", "example": "dingxxx"},
+          {"name": "userIds", "type": "array", "required": false, "description": "用户 ID 列表", "example": "[\"user1\"]"},
+          {"name": "msgId", "type": "string", "required": true, "description": "消息 ID", "example": "msg123"},
+          {"name": "msg", "type": "object", "required": true, "description": "消息内容", "example": "{\"msgType\":\"text\",\"content\":\"Hello\"}"}
+        ]
+      }
+    },
+    {
+      "name": "GetUserInfo",
+      "path": "/v1.0/contact/users/{userId}",
+      "method": "GET",
+      "description": "获取用户信息",
+      "request": {
+        "pathParams": [{"name": "userId", "type": "string", "required": true, "description": "用户 ID", "example": "user123"}],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

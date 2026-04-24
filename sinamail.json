@@ -1,0 +1,31 @@
+{
+  "name": "sinamail",
+  "description": "新浪邮箱 API",
+  "baseURL": "https://api.aliyuncs.com",
+  "docsURL": "https://www.sinalink.com",
+  "auth": {
+    "type": "accesskey",
+    "params": {
+      "accessKeyId": "${SINA_ACCESS_KEY_ID}",
+      "accessKeySecret": "${SINA_ACCESS_KEY_SECRET}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "SendEmail",
+      "path": "/dm/send",
+      "method": "POST",
+      "description": "发送邮件",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "ToAddress", "type": "string", "required": true, "description": "收件人邮箱", "example": "user@example.com"},
+          {"name": "Subject", "type": "string", "required": true, "description": "邮件主题", "example": "Hello"},
+          {"name": "TextBody", "type": "string", "required": true, "description": "邮件正文", "example": "邮件内容"}
+        ]
+      }
+    }
+  ]
+}

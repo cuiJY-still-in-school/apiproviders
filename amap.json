@@ -1,0 +1,57 @@
+{
+  "name": "amap",
+  "description": "高德地图 API - 中国地图服务",
+  "baseURL": "https://restapi.amap.com",
+  "docsURL": "https://lbs.amap.com/api/",
+  "auth": {
+    "type": "amap",
+    "params": {
+      "key": "${AMAP_KEY}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "Geocode",
+      "path": "/v3/geocode/geo",
+      "method": "GET",
+      "description": "地理编码 - 地址转坐标",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "address", "type": "string", "required": true, "description": "地址", "example": "北京市朝阳区望京街道"},
+          {"name": "city", "type": "string", "required": false, "description": "城市", "example": "北京"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "Weather",
+      "path": "/v3/weather/weatherInfo",
+      "method": "GET",
+      "description": "天气查询",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "city", "type": "string", "required": true, "description": "城市编码", "example": "110000"},
+          {"name": "extensions", "type": "string", "required": false, "description": "是否显示空气质量", "example": "base"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "Direction",
+      "path": "/v3/direction/driving",
+      "method": "GET",
+      "description": "驾车路线规划",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "origin", "type": "string", "required": true, "description": "起点坐标", "example": "116.481028,39.989643"},
+          {"name": "destination", "type": "string", "required": true, "description": "终点坐标", "example": "116.465302,40.004717"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

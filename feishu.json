@@ -1,0 +1,56 @@
+{
+  "name": "feishu",
+  "description": "飞书 API - 字节跳动企业通讯",
+  "baseURL": "https://open.feishu.cn/open-apis",
+  "docsURL": "https://open.feishu.com/document/",
+  "auth": {
+    "type": "feishu",
+    "params": {
+      "appId": "${FEISHU_APP_ID}",
+      "appSecret": "${FEISHU_APP_SECRET}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "GetAccessToken",
+      "path": "/auth/v3/tenant_access_token/internal",
+      "method": "POST",
+      "description": "获取访问令牌 (OAuth2)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "app_id", "type": "string", "required": true, "description": "应用 ID", "example": "cli_xxx"},
+          {"name": "app_secret", "type": "string", "required": true, "description": "应用 Secret", "example": "xxx"}
+        ]
+      }
+    },
+    {
+      "name": "SendMessage",
+      "path": "/im/v1/messages",
+      "method": "POST",
+      "description": "发送消息",
+      "request": {
+        "pathParams": [],
+        "queryParams": [{"name": "receive_id_type", "type": "string", "required": true, "description": "接收者类型", "example": "open_id"}],
+        "body": [
+          {"name": "receive_id", "type": "string", "required": true, "description": "接收者 ID", "example": "ou_xxx"},
+          {"name": "msg_type", "type": "string", "required": true, "description": "消息类型", "example": "text"},
+          {"name": "content", "type": "string", "required": true, "description": "消息内容", "example": "{\"text\":\"Hello\"}"}
+        ]
+      }
+    },
+    {
+      "name": "GetUserInfo",
+      "path": "/contact/v3/users/{user_id}",
+      "method": "GET",
+      "description": "获取用户信息",
+      "request": {
+        "pathParams": [{"name": "user_id", "type": "string", "required": true, "description": "用户 ID", "example": "ou_xxx"}],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

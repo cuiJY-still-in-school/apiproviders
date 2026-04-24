@@ -1,0 +1,31 @@
+{
+  "name": "jpush",
+  "description": "极光推送 API - 中国推送服务",
+  "baseURL": "https://api.jpush.cn/v3",
+  "docsURL": "https://docs.jiguang.cn/",
+  "auth": {
+    "type": "jpush",
+    "params": {
+      "appkey": "${JPUSH_APP_KEY}",
+      "secret": "${JPUSH_MASTER_SECRET}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "Push",
+      "path": "/push",
+      "method": "POST",
+      "description": "发送推送",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "platform", "type": "string", "required": true, "description": "平台", "example": "all"},
+          {"name": "audience", "type": "object", "required": true, "description": "推送目标", "example": "{\"all\":\"\"}"},
+          {"name": "notification", "type": "object", "required": true, "description": "通知内容", "example": "{\"android\":{\"alert\":\"Hello\"},\"ios\":{\"alert\":\"Hello\"}}"}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "poe",
+  "description": "Poe API - Access to multiple AI models",
+  "baseURL": "https://api.poe.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${POE_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "ChatCompletions",
+      "path": "/chat/completions",
+      "method": "POST",
+      "description": "Chat completion with Poe models",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "model", "type": "string", "required": true, "description": "Model: Claude-3.5-Sonnet, GPT-4o, Gemini-1.5-Pro, etc.", "example": "Claude-3.5-Sonnet"},
+          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
+          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-1)", "example": "0.7"},
+          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+        ]
+      }
+    }
+  ]
+}

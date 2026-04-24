@@ -1,0 +1,33 @@
+{
+  "name": "tencent-sms",
+  "description": "腾讯云短信 API",
+  "baseURL": "https://sms.tencentcloudapi.com",
+  "docsURL": "https://cloud.tencent.com/document/product/382",
+  "auth": {
+    "type": "secretid",
+    "params": {
+      "secretId": "${TENCENTCLOUD_SECRET_ID}",
+      "secretKey": "${TENCENTCLOUD_SECRET_KEY}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "SendSms",
+      "path": "/",
+      "method": "POST",
+      "description": "发送短信",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "SmsSdkAppId", "type": "string", "required": true, "description": "应用 ID", "example": "140xxx"},
+          {"name": "SignName", "type": "string", "required": true, "description": "签名", "example": "腾讯云"},
+          {"name": "TemplateId", "type": "string", "required": true, "description": "模板 ID", "example": "xxx"},
+          {"name": "PhoneNumberSet", "type": "array", "required": true, "description": "手机号列表", "example": "[\"+86138xxx\"]"},
+          {"name": "TemplateParamSet", "type": "array", "required": false, "description": "模板参数", "example": "[\"123456\"]"}
+        ]
+      }
+    }
+  ]
+}

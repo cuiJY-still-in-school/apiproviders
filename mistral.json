@@ -8,6 +8,35 @@
       "token": "${MISTRAL_API_KEY}"
     }
   },
+  "models": [
+    "mistral-small-latest",
+    "mistral-nemo",
+    "mistral-large-2512",
+    "labs-devstral-small-2512",
+    "devstral-2512",
+    "magistral-medium-latest",
+    "open-mixtral-8x7b",
+    "pixtral-large-latest",
+    "mistral-large-2411",
+    "codestral-latest",
+    "mistral-large-latest",
+    "mistral-small-2506",
+    "pixtral-12b",
+    "ministral-8b-latest",
+    "mistral-embed",
+    "magistral-small",
+    "mistral-small-2603",
+    "ministral-3b-latest",
+    "open-mixtral-8x22b",
+    "devstral-small-2505",
+    "devstral-medium-2507",
+    "mistral-medium-latest",
+    "open-mistral-7b",
+    "devstral-medium-latest",
+    "mistral-medium-2505",
+    "devstral-small-2507",
+    "mistral-medium-2508"
+  ],
   "apis": [
     {
       "name": "ChatCompletions",
@@ -18,10 +47,34 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: mistral-small, mistral-medium, mistral-large, mistral-nemo", "example": "mistral-small"},
-          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-1)", "example": "0.7"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: mistral-small, mistral-medium, mistral-large, mistral-nemo",
+            "example": "mistral-small"
+          },
+          {
+            "name": "messages",
+            "type": "array",
+            "required": true,
+            "description": "Message array",
+            "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-1)",
+            "example": "0.7"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "1024"
+          }
         ]
       }
     },
@@ -34,9 +87,27 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "mistral-small"},
-          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model name",
+            "example": "mistral-small"
+          },
+          {
+            "name": "prompt",
+            "type": "string",
+            "required": true,
+            "description": "Prompt text",
+            "example": "Once upon a time"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "100"
+          }
         ]
       }
     },
@@ -49,8 +120,20 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: mistral-embed", "example": "mistral-embed"},
-          {"name": "input", "type": "string", "required": true, "description": "Input text", "example": "Hello world"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: mistral-embed",
+            "example": "mistral-embed"
+          },
+          {
+            "name": "input",
+            "type": "string",
+            "required": true,
+            "description": "Input text",
+            "example": "Hello world"
+          }
         ]
       }
     }

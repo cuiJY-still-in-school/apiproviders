@@ -16,16 +16,52 @@
       "description": "Chat completion (Azure OpenAI format)",
       "request": {
         "pathParams": [
-          {"name": "resource", "type": "string", "required": true, "description": "Azure resource name", "example": "my-resource"},
-          {"name": "deployment", "type": "string", "required": true, "description": "Deployment name", "example": "gpt-4o"}
+          {
+            "name": "resource",
+            "type": "string",
+            "required": true,
+            "description": "Azure resource name",
+            "example": "my-resource"
+          },
+          {
+            "name": "deployment",
+            "type": "string",
+            "required": true,
+            "description": "Deployment name",
+            "example": "gpt-4o"
+          }
         ],
         "queryParams": [
-          {"name": "api-version", "type": "string", "required": true, "description": "API version", "example": "2024-02-01"}
+          {
+            "name": "api-version",
+            "type": "string",
+            "required": true,
+            "description": "API version",
+            "example": "2024-02-01"
+          }
         ],
         "body": [
-          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+          {
+            "name": "messages",
+            "type": "array",
+            "required": true,
+            "description": "Message array",
+            "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-2)",
+            "example": "0.7"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "1024"
+          }
         ]
       }
     },
@@ -36,17 +72,155 @@
       "description": "Text completion",
       "request": {
         "pathParams": [
-          {"name": "resource", "type": "string", "required": true, "description": "Azure resource name", "example": "my-resource"},
-          {"name": "deployment", "type": "string", "required": true, "description": "Deployment name", "example": "gpt-35-turbo"}
+          {
+            "name": "resource",
+            "type": "string",
+            "required": true,
+            "description": "Azure resource name",
+            "example": "my-resource"
+          },
+          {
+            "name": "deployment",
+            "type": "string",
+            "required": true,
+            "description": "Deployment name",
+            "example": "gpt-35-turbo"
+          }
         ],
         "queryParams": [
-          {"name": "api-version", "type": "string", "required": true, "description": "API version", "example": "2024-02-01"}
+          {
+            "name": "api-version",
+            "type": "string",
+            "required": true,
+            "description": "API version",
+            "example": "2024-02-01"
+          }
         ],
         "body": [
-          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"}
+          {
+            "name": "prompt",
+            "type": "string",
+            "required": true,
+            "description": "Prompt text",
+            "example": "Once upon a time"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "100"
+          }
         ]
       }
     }
+  ],
+  "models": [
+    "mistral-nemo",
+    "gpt-5.2-chat",
+    "codex-mini",
+    "phi-4-multimodal",
+    "phi-3.5-mini-instruct",
+    "llama-4-scout-17b-16e-instruct",
+    "grok-4-1-fast-reasoning",
+    "phi-3-medium-4k-instruct",
+    "ministral-3b",
+    "claude-haiku-4-5",
+    "meta-llama-3.1-8b-instruct",
+    "kimi-k2.5",
+    "llama-3.3-70b-instruct",
+    "deepseek-v3-0324",
+    "gpt-5-chat",
+    "phi-3.5-moe-instruct",
+    "gpt-5.3-chat",
+    "o1-mini",
+    "text-embedding-3-large",
+    "phi-3-mini-128k-instruct",
+    "phi-4-reasoning",
+    "gpt-5-mini",
+    "gpt-5-nano",
+    "meta-llama-3-70b-instruct",
+    "phi-3-small-8k-instruct",
+    "gpt-5.3-codex",
+    "text-embedding-ada-002",
+    "llama-3.2-90b-vision-instruct",
+    "deepseek-r1",
+    "grok-4-1-fast-non-reasoning",
+    "deepseek-v3.2-speciale",
+    "gpt-5.2",
+    "mistral-large-2411",
+    "claude-opus-4-1",
+    "gpt-5.4-mini",
+    "cohere-command-a",
+    "llama-3.2-11b-vision-instruct",
+    "meta-llama-3.1-405b-instruct",
+    "gpt-5.1-chat",
+    "gpt-4-turbo-vision",
+    "gpt-5.4-nano",
+    "gpt-5.2-codex",
+    "cohere-embed-v-4-0",
+    "gpt-5.1-codex-mini",
+    "gpt-3.5-turbo-0125",
+    "o1-preview",
+    "cohere-embed-v3-multilingual",
+    "grok-4-20-non-reasoning",
+    "gpt-5.1",
+    "grok-4-fast-reasoning",
+    "o1",
+    "mistral-small-2503",
+    "gpt-5.4-pro",
+    "model-router",
+    "gpt-3.5-turbo-1106",
+    "text-embedding-3-small",
+    "deepseek-v3.1",
+    "claude-opus-4-5",
+    "phi-3-mini-4k-instruct",
+    "meta-llama-3.1-70b-instruct",
+    "phi-4-mini-reasoning",
+    "gpt-4",
+    "meta-llama-3-8b-instruct",
+    "gpt-5-codex",
+    "gpt-5.4",
+    "phi-4-mini",
+    "grok-4-20-reasoning",
+    "gpt-3.5-turbo-0301",
+    "claude-opus-4-6",
+    "phi-3-small-128k-instruct",
+    "deepseek-v3.2",
+    "phi-3-medium-128k-instruct",
+    "gpt-3.5-turbo-0613",
+    "claude-sonnet-4-5",
+    "phi-4",
+    "gpt-5",
+    "gpt-4-32k",
+    "cohere-embed-v3-english",
+    "phi-4-reasoning-plus",
+    "mistral-medium-2505",
+    "gpt-3.5-turbo-instruct",
+    "deepseek-r1-0528",
+    "kimi-k2-thinking",
+    "gpt-5.1-codex",
+    "codestral-2501",
+    "llama-4-maverick-17b-128e-instruct-fp8",
+    "mai-ds-r1",
+    "gpt-5.1-codex-max",
+    "claude-sonnet-4-6",
+    "gpt-4-turbo",
+    "gpt-4o-mini",
+    "cohere-command-r-08-2024",
+    "o4-mini",
+    "grok-code-fast-1",
+    "o3-mini",
+    "grok-4",
+    "gpt-4.1-nano",
+    "grok-3-mini",
+    "o3",
+    "gpt-5-pro",
+    "gpt-4o",
+    "cohere-command-r-plus-08-2024",
+    "gpt-4.1",
+    "gpt-4.1-mini",
+    "grok-3",
+    "grok-4-fast-non-reasoning"
   ]
 }

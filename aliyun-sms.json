@@ -1,0 +1,47 @@
+{
+  "name": "aliyun-sms",
+  "description": "阿里云短信 API",
+  "baseURL": "https://dysmsapi.aliyuncs.com",
+  "docsURL": "https://help.aliyun.com/document_detail/101884.html",
+  "auth": {
+    "type": "accesskey",
+    "params": {
+      "accessKeyId": "${ALIYUN_ACCESS_KEY_ID}",
+      "accessKeySecret": "${ALIYUN_ACCESS_KEY_SECRET}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "SendSms",
+      "path": "/",
+      "method": "POST",
+      "description": "发送短信",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "PhoneNumbers", "type": "string", "required": true, "description": "手机号", "example": "13800138000"},
+          {"name": "SignName", "type": "string", "required": true, "description": "签名", "example": "阿里云"},
+          {"name": "TemplateCode", "type": "string", "required": true, "description": "模板 ID", "example": "SMS_xxx"},
+          {"name": "TemplateParam", "type": "string", "required": false, "description": "模板参数 JSON", "example": "{\"code\":\"123456\"}"}
+        ]
+      }
+    },
+    {
+      "name": "QuerySms",
+      "path": "/",
+      "method": "POST",
+      "description": "查询短信发送状态",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "PhoneNumbers", "type": "string", "required": true, "description": "手机号", "example": "13800138000"},
+          {"name": "SendDate", "type": "string", "required": true, "description": "发送日期", "example": "20240101"},
+          {"name": "Action", "type": "string", "required": true, "description": "API Action", "example": "QuerySms"}
+        ]
+      }
+    }
+  ]
+}

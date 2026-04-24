@@ -1,0 +1,43 @@
+{
+  "name": "baidumap",
+  "description": "百度地图 API - 中国地图服务",
+  "baseURL": "https://api.map.baidu.com",
+  "docsURL": "https://lbsyun.baidu.com/index.php/",
+  "auth": {
+    "type": "baidu",
+    "params": {
+      "ak": "${BAIDU_MAP_AK}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "Geocoding",
+      "path": "/geocoding/v3/",
+      "method": "GET",
+      "description": "地理编码 - 地址转坐标",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "address", "type": "string", "required": true, "description": "地址", "example": "北京市朝阳区望京街道"},
+          {"name": "output", "type": "string", "required": false, "description": "输出格式", "example": "json"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "Direction",
+      "path": "/direction/v2/driving",
+      "method": "GET",
+      "description": "驾车路线规划",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "origin", "type": "string", "required": true, "description": "起点坐标", "example": "40.056878,116.30815"},
+          {"name": "destination", "type": "string", "required": true, "description": "终点坐标", "example": "39.93884,116.45755"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

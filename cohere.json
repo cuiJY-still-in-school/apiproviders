@@ -18,10 +18,34 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: command-r-plus, command-r, command", "example": "command-r-plus"},
-          {"name": "message", "type": "string", "required": true, "description": "User message", "example": "Hello"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-5)", "example": "0.7"},
-          {"name": "conversation_id", "type": "string", "required": false, "description": "Conversation ID for context", "example": "xxx"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: command-r-plus, command-r, command",
+            "example": "command-r-plus"
+          },
+          {
+            "name": "message",
+            "type": "string",
+            "required": true,
+            "description": "User message",
+            "example": "Hello"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-5)",
+            "example": "0.7"
+          },
+          {
+            "name": "conversation_id",
+            "type": "string",
+            "required": false,
+            "description": "Conversation ID for context",
+            "example": "xxx"
+          }
         ]
       }
     },
@@ -34,10 +58,34 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "command-r-plus"},
-          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature", "example": "0.7"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model name",
+            "example": "command-r-plus"
+          },
+          {
+            "name": "prompt",
+            "type": "string",
+            "required": true,
+            "description": "Prompt text",
+            "example": "Once upon a time"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "100"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature",
+            "example": "0.7"
+          }
         ]
       }
     },
@@ -50,10 +98,36 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: embed-english-v3.0, embed-multilingual-v3.0", "example": "embed-english-v3.0"},
-          {"name": "texts", "type": "array", "required": true, "description": "Texts to embed", "example": "[\"Hello world\"]"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: embed-english-v3.0, embed-multilingual-v3.0",
+            "example": "embed-english-v3.0"
+          },
+          {
+            "name": "texts",
+            "type": "array",
+            "required": true,
+            "description": "Texts to embed",
+            "example": "[\"Hello world\"]"
+          }
         ]
       }
     }
+  ],
+  "models": [
+    "command-a-reasoning-08-2025",
+    "command-r7b-12-2024",
+    "c4ai-aya-vision-8b",
+    "command-r-plus-08-2024",
+    "c4ai-aya-expanse-8b",
+    "command-r7b-arabic-02-2025",
+    "command-a-vision-07-2025",
+    "c4ai-aya-vision-32b",
+    "command-a-translate-08-2025",
+    "command-r-08-2024",
+    "c4ai-aya-expanse-32b",
+    "command-a-03-2025"
   ]
 }

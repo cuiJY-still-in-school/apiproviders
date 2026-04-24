@@ -18,10 +18,34 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "fireworks-ai/firefunction-v1"},
-          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model name",
+            "example": "fireworks-ai/firefunction-v1"
+          },
+          {
+            "name": "messages",
+            "type": "array",
+            "required": true,
+            "description": "Message array",
+            "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-2)",
+            "example": "0.7"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "1024"
+          }
         ]
       }
     },
@@ -34,11 +58,49 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "fireworks-ai/llama-3-70b-instruct"},
-          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model name",
+            "example": "fireworks-ai/llama-3-70b-instruct"
+          },
+          {
+            "name": "prompt",
+            "type": "string",
+            "required": true,
+            "description": "Prompt text",
+            "example": "Once upon a time"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "100"
+          }
         ]
       }
     }
+  ],
+  "models": [
+    "accounts/fireworks/models/glm-5p1",
+    "accounts/fireworks/models/deepseek-v3p2",
+    "accounts/fireworks/models/minimax-m2p5",
+    "accounts/fireworks/models/glm-4p5-air",
+    "accounts/fireworks/models/glm-5",
+    "accounts/fireworks/models/deepseek-v3p1",
+    "accounts/fireworks/models/kimi-k2p6",
+    "accounts/fireworks/models/kimi-k2-instruct",
+    "accounts/fireworks/models/qwen3p6-plus",
+    "accounts/fireworks/models/minimax-m2p1",
+    "accounts/fireworks/models/minimax-m2p7",
+    "accounts/fireworks/models/glm-4p7",
+    "accounts/fireworks/models/glm-4p5",
+    "accounts/fireworks/models/kimi-k2p5",
+    "accounts/fireworks/models/gpt-oss-20b",
+    "accounts/fireworks/models/gpt-oss-120b",
+    "accounts/fireworks/models/kimi-k2-thinking",
+    "accounts/fireworks/routers/kimi-k2p5-turbo"
   ]
 }

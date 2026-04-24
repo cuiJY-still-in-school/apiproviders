@@ -1,0 +1,41 @@
+{
+  "name": "qiniu",
+  "description": "七牛云对象存储 API",
+  "baseURL": "https://上传区域不同",
+  "docsURL": "https://developer.qiniu.com/",
+  "auth": {
+    "type": "qiniu",
+    "params": {
+      "accessKey": "${QINIU_ACCESS_KEY}",
+      "secretKey": "${QINIU_SECRET_KEY}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "UploadToken",
+      "path": "/v2/tokens/upload",
+      "method": "POST",
+      "description": "获取上传凭证",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "scope", "type": "string", "required": true, "description": "存储空间", "example": "my-bucket"},
+          {"name": "deadline", "type": "integer", "required": false, "description": "过期时间戳", "example": "1640000000"}
+        ]
+      }
+    },
+    {
+      "name": "ListBuckets",
+      "path": "/v2/buckets",
+      "method": "GET",
+      "description": "列出存储空间",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    }
+  ]
+}

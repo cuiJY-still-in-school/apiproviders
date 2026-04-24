@@ -18,10 +18,34 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "mistralai/Mistral-7B-Instruct-v0.1"},
-          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model name",
+            "example": "mistralai/Mistral-7B-Instruct-v0.1"
+          },
+          {
+            "name": "messages",
+            "type": "array",
+            "required": true,
+            "description": "Message array",
+            "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-2)",
+            "example": "0.7"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "1024"
+          }
         ]
       }
     },
@@ -34,11 +58,47 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model name", "example": "mistralai/Mistral-7B-Instruct-v0.1"},
-          {"name": "prompt", "type": "string", "required": true, "description": "Prompt text", "example": "Once upon a time"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "100"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model name",
+            "example": "mistralai/Mistral-7B-Instruct-v0.1"
+          },
+          {
+            "name": "prompt",
+            "type": "string",
+            "required": true,
+            "description": "Prompt text",
+            "example": "Once upon a time"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "100"
+          }
         ]
       }
     }
+  ],
+  "models": [
+    "essentialai/Rnj-1-Instruct",
+    "Qwen/Qwen3.5-397B-A17B",
+    "Qwen/Qwen3-Coder-Next-FP8",
+    "Qwen/Qwen3-235B-A22B-Instruct-2507-tput",
+    "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8",
+    "zai-org/GLM-5.1",
+    "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+    "deepseek-ai/DeepSeek-V3",
+    "deepseek-ai/DeepSeek-R1",
+    "deepseek-ai/DeepSeek-V3-1",
+    "openai/gpt-oss-120b",
+    "google/gemma-4-31B-it",
+    "moonshotai/Kimi-K2.6",
+    "moonshotai/Kimi-K2.5",
+    "MiniMaxAI/MiniMax-M2.5",
+    "MiniMaxAI/MiniMax-M2.7"
   ]
 }

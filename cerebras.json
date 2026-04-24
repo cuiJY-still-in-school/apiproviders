@@ -18,12 +18,42 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: llama-3.3-70b-instruct", "example": "llama-3.3-70b-instruct"},
-          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: llama-3.3-70b-instruct",
+            "example": "llama-3.3-70b-instruct"
+          },
+          {
+            "name": "messages",
+            "type": "array",
+            "required": true,
+            "description": "Message array",
+            "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-2)",
+            "example": "0.7"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "1024"
+          }
         ]
       }
     }
+  ],
+  "models": [
+    "llama3.1-8b",
+    "qwen-3-235b-a22b-instruct-2507",
+    "zai-glm-4.7",
+    "gpt-oss-120b"
   ]
 }

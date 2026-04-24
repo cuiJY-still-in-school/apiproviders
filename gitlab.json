@@ -28,10 +28,34 @@
       "request": {
         "pathParams": [],
         "queryParams": [
-          {"name": "membership", "type": "boolean", "required": false, "description": "Only show user's projects", "example": "true"},
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"},
-          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"},
-          {"name": "search", "type": "string", "required": false, "description": "Search projects", "example": "myproject"}
+          {
+            "name": "membership",
+            "type": "boolean",
+            "required": false,
+            "description": "Only show user's projects",
+            "example": "true"
+          },
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "required": false,
+            "description": "Page number",
+            "example": "1"
+          },
+          {
+            "name": "search",
+            "type": "string",
+            "required": false,
+            "description": "Search projects",
+            "example": "myproject"
+          }
         ],
         "body": []
       }
@@ -43,7 +67,13 @@
       "description": "Get project by ID or path",
       "request": {
         "pathParams": [
-          {"name": "id", "type": "string", "required": true, "description": "Project ID or URL-encoded path", "example": "12345 or namespace%2Fproject"}
+          {
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Project ID or URL-encoded path",
+            "example": "12345 or namespace%2Fproject"
+          }
         ],
         "queryParams": [],
         "body": []
@@ -56,11 +86,29 @@
       "description": "List project issues",
       "request": {
         "pathParams": [
-          {"name": "id", "type": "string", "required": true, "description": "Project ID", "example": "12345"}
+          {
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Project ID",
+            "example": "12345"
+          }
         ],
         "queryParams": [
-          {"name": "state", "type": "string", "required": false, "description": "Filter: opened, closed, all", "example": "opened"},
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+          {
+            "name": "state",
+            "type": "string",
+            "required": false,
+            "description": "Filter: opened, closed, all",
+            "example": "opened"
+          },
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          }
         ],
         "body": []
       }
@@ -72,13 +120,37 @@
       "description": "Create an issue",
       "request": {
         "pathParams": [
-          {"name": "id", "type": "string", "required": true, "description": "Project ID", "example": "12345"}
+          {
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Project ID",
+            "example": "12345"
+          }
         ],
         "queryParams": [],
         "body": [
-          {"name": "title", "type": "string", "required": true, "description": "Issue title", "example": "Bug found"},
-          {"name": "description", "type": "string", "required": false, "description": "Issue description", "example": "Steps to reproduce..."},
-          {"name": "labels", "type": "string", "required": false, "description": "Comma-separated labels", "example": "bug,high-priority"}
+          {
+            "name": "title",
+            "type": "string",
+            "required": true,
+            "description": "Issue title",
+            "example": "Bug found"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "Issue description",
+            "example": "Steps to reproduce..."
+          },
+          {
+            "name": "labels",
+            "type": "string",
+            "required": false,
+            "description": "Comma-separated labels",
+            "example": "bug,high-priority"
+          }
         ]
       }
     },
@@ -89,10 +161,22 @@
       "description": "List merge requests",
       "request": {
         "pathParams": [
-          {"name": "id", "type": "string", "required": true, "description": "Project ID", "example": "12345"}
+          {
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Project ID",
+            "example": "12345"
+          }
         ],
         "queryParams": [
-          {"name": "state", "type": "string", "required": false, "description": "Filter: opened, closed, merged, all", "example": "opened"}
+          {
+            "name": "state",
+            "type": "string",
+            "required": false,
+            "description": "Filter: opened, closed, merged, all",
+            "example": "opened"
+          }
         ],
         "body": []
       }
@@ -104,10 +188,22 @@
       "description": "List CI/CD pipelines",
       "request": {
         "pathParams": [
-          {"name": "id", "type": "string", "required": true, "description": "Project ID", "example": "12345"}
+          {
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Project ID",
+            "example": "12345"
+          }
         ],
         "queryParams": [
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          }
         ],
         "body": []
       }
@@ -119,14 +215,49 @@
       "description": "Get file from repository",
       "request": {
         "pathParams": [
-          {"name": "id", "type": "string", "required": true, "description": "Project ID", "example": "12345"},
-          {"name": "file_path", "type": "string", "required": true, "description": "File path", "example": "README.md"}
+          {
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Project ID",
+            "example": "12345"
+          },
+          {
+            "name": "file_path",
+            "type": "string",
+            "required": true,
+            "description": "File path",
+            "example": "README.md"
+          }
         ],
         "queryParams": [
-          {"name": "ref", "type": "string", "required": false, "description": "Branch name", "example": "main"}
+          {
+            "name": "ref",
+            "type": "string",
+            "required": false,
+            "description": "Branch name",
+            "example": "main"
+          }
         ],
         "body": []
       }
     }
+  ],
+  "models": [
+    "duo-chat-gpt-5-4-nano",
+    "duo-chat-gpt-5-mini",
+    "duo-chat-sonnet-4-6",
+    "duo-chat-gpt-5-2",
+    "duo-chat-gpt-5-codex",
+    "duo-chat-gpt-5-1",
+    "duo-chat-gpt-5-2-codex",
+    "duo-chat-sonnet-4-5",
+    "duo-chat-gpt-5-4",
+    "duo-chat-haiku-4-5",
+    "duo-chat-gpt-5-3-codex",
+    "duo-chat-gpt-5-4-mini",
+    "duo-chat-opus-4-7",
+    "duo-chat-opus-4-5",
+    "duo-chat-opus-4-6"
   ]
 }

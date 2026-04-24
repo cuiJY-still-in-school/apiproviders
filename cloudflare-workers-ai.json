@@ -16,16 +16,56 @@
       "description": "Chat completion with Workers AI models",
       "request": {
         "pathParams": [
-          {"name": "account_id", "type": "string", "required": true, "description": "Cloudflare Account ID", "example": "xxx"}
+          {
+            "name": "account_id",
+            "type": "string",
+            "required": true,
+            "description": "Cloudflare Account ID",
+            "example": "xxx"
+          }
         ],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: @cf/meta/llama-3-70b-instruct, @cf/mistralai/mistral-7b-instruct-v0.1", "example": "@cf/meta/llama-3-70b-instruct"},
-          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: @cf/meta/llama-3-70b-instruct, @cf/mistralai/mistral-7b-instruct-v0.1",
+            "example": "@cf/meta/llama-3-70b-instruct"
+          },
+          {
+            "name": "messages",
+            "type": "array",
+            "required": true,
+            "description": "Message array",
+            "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-2)",
+            "example": "0.7"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "1024"
+          }
         ]
       }
     }
+  ],
+  "models": [
+    "@cf/zai-org/glm-4.7-flash",
+    "@cf/nvidia/nemotron-3-120b-a12b",
+    "@cf/openai/gpt-oss-20b",
+    "@cf/openai/gpt-oss-120b",
+    "@cf/meta/llama-4-scout-17b-16e-instruct",
+    "@cf/google/gemma-4-26b-a4b-it",
+    "@cf/moonshotai/kimi-k2.5",
+    "@cf/moonshotai/kimi-k2.6"
   ]
 }

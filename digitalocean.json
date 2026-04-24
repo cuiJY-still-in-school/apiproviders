@@ -17,9 +17,27 @@
       "request": {
         "pathParams": [],
         "queryParams": [
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"},
-          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"},
-          {"name": "tag_name", "type": "string", "required": false, "description": "Filter by tag", "example": "web"}
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          },
+          {
+            "name": "page",
+            "type": "integer",
+            "required": false,
+            "description": "Page number",
+            "example": "1"
+          },
+          {
+            "name": "tag_name",
+            "type": "string",
+            "required": false,
+            "description": "Filter by tag",
+            "example": "web"
+          }
         ],
         "body": []
       }
@@ -31,7 +49,13 @@
       "description": "Get droplet by ID",
       "request": {
         "pathParams": [
-          {"name": "id", "type": "integer", "required": true, "description": "Droplet ID", "example": "123456"}
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Droplet ID",
+            "example": "123456"
+          }
         ],
         "queryParams": [],
         "body": []
@@ -45,7 +69,13 @@
       "request": {
         "pathParams": [],
         "queryParams": [
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          }
         ],
         "body": []
       }
@@ -58,7 +88,13 @@
       "request": {
         "pathParams": [],
         "queryParams": [
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          }
         ],
         "body": []
       }
@@ -72,8 +108,20 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "name", "type": "string", "required": true, "description": "Domain name", "example": "example.com"},
-          {"name": "ip_address", "type": "string", "required": true, "description": "Default IPv4 address", "example": "1.2.3.4"}
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "description": "Domain name",
+            "example": "example.com"
+          },
+          {
+            "name": "ip_address",
+            "type": "string",
+            "required": true,
+            "description": "Default IPv4 address",
+            "example": "1.2.3.4"
+          }
         ]
       }
     },
@@ -85,8 +133,20 @@
       "request": {
         "pathParams": [],
         "queryParams": [
-          {"name": "type", "type": "string", "required": false, "description": "Type: snapshot, distribution, application", "example": "distribution"},
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+          {
+            "name": "type",
+            "type": "string",
+            "required": false,
+            "description": "Type: snapshot, distribution, application",
+            "example": "distribution"
+          },
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          }
         ],
         "body": []
       }
@@ -99,7 +159,13 @@
       "request": {
         "pathParams": [],
         "queryParams": [
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          }
         ],
         "body": []
       }
@@ -112,10 +178,64 @@
       "request": {
         "pathParams": [],
         "queryParams": [
-          {"name": "per_page", "type": "integer", "required": false, "description": "Results per page", "example": "20"}
+          {
+            "name": "per_page",
+            "type": "integer",
+            "required": false,
+            "description": "Results per page",
+            "example": "20"
+          }
         ],
         "body": []
       }
     }
+  ],
+  "models": [
+    "openai-gpt-5-2-pro",
+    "openai-gpt-4o-mini",
+    "multi-qa-mpnet-base-dot-v1",
+    "kimi-k2.5",
+    "anthropic-claude-opus-4.7",
+    "anthropic-claude-sonnet-4",
+    "openai-gpt-5.4",
+    "openai-o3",
+    "glm-5",
+    "openai-gpt-5.4-nano",
+    "llama3.3-70b-instruct",
+    "deepseek-r1-distill-llama-70b",
+    "alibaba-qwen3-32b",
+    "anthropic-claude-opus-4.5",
+    "openai-o1",
+    "openai-gpt-5-nano",
+    "anthropic-claude-4.5-sonnet",
+    "qwen3-embedding-0.6b",
+    "gte-large-en-v1.5",
+    "openai-gpt-4.1",
+    "openai-gpt-5.2",
+    "anthropic-claude-opus-4",
+    "openai-gpt-oss-20b",
+    "openai-o3-mini",
+    "openai-gpt-oss-120b",
+    "anthropic-claude-4.1-opus",
+    "anthropic-claude-4.6-sonnet",
+    "openai-gpt-5-mini",
+    "anthropic-claude-haiku-4.5",
+    "minimax-m2.5",
+    "openai-gpt-image-1",
+    "nvidia-nemotron-3-super-120b",
+    "openai-gpt-5.4-pro",
+    "all-mini-lm-l6-v2",
+    "openai-gpt-5.1-codex-max",
+    "anthropic-claude-opus-4.6",
+    "openai-gpt-4o",
+    "openai-gpt-5.4-mini",
+    "openai-gpt-5",
+    "arcee-trinity-large-thinking",
+    "openai-gpt-image-1.5",
+    "openai-gpt-5.3-codex",
+    "fal-ai/fast-sdxl",
+    "fal-ai/flux/schnell",
+    "fal-ai/elevenlabs/tts/multilingual-v2",
+    "fal-ai/stable-audio-25/text-to-audio"
   ]
 }

@@ -8,6 +8,35 @@
       "token": "${GROQ_API_KEY}"
     }
   },
+  "models": [
+    "gemma2-9b-it",
+    "mistral-saba-24b",
+    "deepseek-r1-distill-llama-70b",
+    "llama-guard-3-8b",
+    "llama-3.3-70b-versatile",
+    "allam-2-7b",
+    "whisper-large-v3",
+    "llama-3.1-8b-instant",
+    "llama3-70b-8192",
+    "qwen-qwq-32b",
+    "whisper-large-v3-turbo",
+    "llama3-8b-8192",
+    "canopylabs/orpheus-arabic-saudi",
+    "canopylabs/orpheus-v1-english",
+    "meta-llama/llama-4-scout-17b-16e-instruct",
+    "meta-llama/llama-prompt-guard-2-22m",
+    "meta-llama/llama-guard-4-12b",
+    "meta-llama/llama-4-maverick-17b-128e-instruct",
+    "meta-llama/llama-prompt-guard-2-86m",
+    "openai/gpt-oss-20b",
+    "openai/gpt-oss-safeguard-20b",
+    "openai/gpt-oss-120b",
+    "qwen/qwen3-32b",
+    "groq/compound",
+    "groq/compound-mini",
+    "moonshotai/kimi-k2-instruct",
+    "moonshotai/kimi-k2-instruct-0905"
+  ],
   "apis": [
     {
       "name": "ChatCompletions",
@@ -18,11 +47,41 @@
         "pathParams": [],
         "queryParams": [],
         "body": [
-          {"name": "model", "type": "string", "required": true, "description": "Model: llama-3.3-70b-versatile, mixtral-8x7b-32768, etc.", "example": "llama-3.3-70b-versatile"},
-          {"name": "messages", "type": "array", "required": true, "description": "Message array", "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"},
-          {"name": "temperature", "type": "number", "required": false, "description": "Temperature (0-2)", "example": "0.7"},
-          {"name": "max_tokens", "type": "integer", "required": false, "description": "Max tokens", "example": "1024"},
-          {"name": "stream", "type": "boolean", "required": false, "description": "Enable streaming", "example": "false"}
+          {
+            "name": "model",
+            "type": "string",
+            "required": true,
+            "description": "Model: llama-3.3-70b-versatile, mixtral-8x7b-32768, etc.",
+            "example": "llama-3.3-70b-versatile"
+          },
+          {
+            "name": "messages",
+            "type": "array",
+            "required": true,
+            "description": "Message array",
+            "example": "[{\"role\": \"user\", \"content\": \"Hello\"}]"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "required": false,
+            "description": "Temperature (0-2)",
+            "example": "0.7"
+          },
+          {
+            "name": "max_tokens",
+            "type": "integer",
+            "required": false,
+            "description": "Max tokens",
+            "example": "1024"
+          },
+          {
+            "name": "stream",
+            "type": "boolean",
+            "required": false,
+            "description": "Enable streaming",
+            "example": "false"
+          }
         ]
       }
     },

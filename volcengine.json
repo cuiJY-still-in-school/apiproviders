@@ -1,0 +1,30 @@
+{
+  "name": "volcengine",
+  "description": "火山引擎 API - 字节跳动云计算",
+  "baseURL": "https://open.volcengineapi.com",
+  "docsURL": "https://www.volcengine.com/docs/",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "accessKey": "${VOLCENGINE_AK}",
+      "secretKey": "${VOLCENGINE_SK}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "DescribeInstances",
+      "path": "/v2/describeInstances",
+      "method": "POST",
+      "description": "查询云服务器",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "RegionId", "type": "string", "required": true, "description": "地域", "example": "cn-beijing"},
+          {"name": "Limit", "type": "integer", "required": false, "description": "每页数量", "example": "10"}
+        ]
+      }
+    }
+  ]
+}

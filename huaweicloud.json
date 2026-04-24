@@ -1,0 +1,31 @@
+{
+  "name": "huaweicloud",
+  "description": "华为云 API - ECS、云存储等",
+  "baseURL": "https://ecs.cn-east-3.myhuaweicloud.com",
+  "docsURL": "https://support.huaweicloud.com/api-ecs/",
+  "auth": {
+    "type": "hwcam",
+    "params": {
+      "accessKey": "${HUAWEI_CLOUD_AK}",
+      "secretKey": "${HUAWEI_CLOUD_SK}",
+      "projectId": "${HUAWEI_CLOUD_PROJECT_ID}"
+    }
+  },
+  "models": [],
+  "apis": [
+    {
+      "name": "ListServers",
+      "path": "/v1/cloudservers/cloudservers",
+      "method": "GET",
+      "description": "查询云服务器列表",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "每页数量", "example": "10"},
+          {"name": "offset", "type": "integer", "required": false, "description": "偏移量", "example": "0"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

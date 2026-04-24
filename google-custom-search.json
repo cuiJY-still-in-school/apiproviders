@@ -1,0 +1,34 @@
+{
+  "name": "google-custom-search",
+  "description": "Google Custom Search API - Web search via Google",
+  "baseURL": "https://www.googleapis.com/customsearch/v1",
+  "auth": {
+    "type": "query",
+    "params": {
+      "key": "${GOOGLE_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "Search",
+      "path": "",
+      "method": "GET",
+      "description": "Search the web using Google",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "q", "type": "string", "required": true, "description": "Search query", "example": "golang tutorial"},
+          {"name": "key", "type": "string", "required": true, "description": "Your Google API key", "example": "your_api_key"},
+          {"name": "cx", "type": "string", "required": true, "description": "Search engine ID (cx parameter)", "example": "your_search_engine_id"},
+          {"name": "num", "type": "integer", "required": false, "description": "Number of results (1-10)", "example": "10"},
+          {"name": "start", "type": "integer", "required": false, "description": "Start index for pagination", "example": "1"},
+          {"name": "safe", "type": "string", "required": false, "description": "Safe search: off, medium, high", "example": "off"},
+          {"name": "lr", "type": "string", "required": false, "description": "Language restrict (e.g., lang_en)", "example": "lang_en"},
+          {"name": "cr", "type": "string", "required": false, "description": "Country restrict (e.g., countryUS)", "example": "countryUS"},
+          {"name": "sort", "type": "string", "required": false, "description": "Sort by date", "example": "date"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

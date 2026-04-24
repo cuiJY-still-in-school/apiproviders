@@ -1,0 +1,121 @@
+{
+  "name": "notion",
+  "description": "Notion API - Notes, tasks and knowledge management",
+  "baseURL": "https://api.notion.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${NOTION_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "Search",
+      "path": "/search",
+      "method": "POST",
+      "description": "Search all pages and databases",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "query", "type": "string", "required": false, "description": "Search query", "example": "project notes"},
+          {"name": "filter", "type": "object", "required": false, "description": "Filter by object type: page or database", "example": "{\"property\": \"object\", \"value\": \"page\"}"},
+          {"name": "sort", "type": "object", "required": false, "description": "Sort direction", "example": "{\"direction\": \"descending\", \"timestamp\": \"last_edited_time\"}"},
+          {"name": "page_size", "type": "integer", "required": false, "description": "Number of results (max 100)", "example": "10"},
+          "start_cursor", "type": "string", "required": false, "description": "Pagination cursor", "example": "xxx"}
+        ]
+      }
+    },
+    {
+      "name": "GetPage",
+      "path": "/pages/{page_id}",
+      "method": "GET",
+      "description": "Get a page by ID",
+      "request": {
+        "pathParams": [
+          {"name": "page_id", "type": "string", "required": true, "description": "Page ID", "example": "xxx"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "CreatePage",
+      "path": "/pages",
+      "method": "POST",
+      "description": "Create a new page",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "parent", "type": "object", "required": true, "description": "Parent page or database", "example": "{\"page_id\": \"xxx\"}"},
+          {"name": "properties", "type": "object", "required": true, "description": "Page properties", "example": "{\"title\": [{\"text\": {\"content\": \"My Page\"}}]}"},
+          {"name": "children", "type": "array", "required": false, "description": "Page content blocks", "example": "[{\"object\": \"block\", \"type\": \"paragraph\", \"paragraph\": {\"text\": [{\"type\": \"text\", \"text\": {\"content\": \"Hello\"}}]}}}]"}
+        ]
+      }
+    },
+    {
+      "name": "UpdatePage",
+      "path": "/pages/{page_id}",
+      "method": "PATCH",
+      "description": "Update a page",
+      "request": {
+        "pathParams": [
+          {"name": "page_id", "type": "string", "required": true, "description": "Page ID", "example": "xxx"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "properties", "type": "object", "required": true, "description": "Properties to update", "example": "{\"title\": [{\"text\": {\"content\": \"Updated Title\"}}]}"}
+        ]
+      }
+    },
+    {
+      "name": "GetBlockChildren",
+      "path": "/blocks/{block_id}/children",
+      "method": "GET",
+      "description": "Get page block children",
+      "request": {
+        "pathParams": [
+          {"name": "block_id", "type": "string", "required": true, "description": "Block ID", "example": "xxx"}
+        ],
+        "queryParams": [
+          {"name": "page_size", "type": "integer", "required": false, "description": "Number of results", "example": "100"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "AppendBlockChildren",
+      "path": "/blocks/{block_id}/children",
+      "method": "PATCH",
+      "description": "Append blocks to a page",
+      "request": {
+        "pathParams": [
+          {"name": "block_id", "type": "string", "required": true, "description": "Block ID", "example": "xxx"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "children", "type": "array", "required": true, "description": "Blocks to append", "example": "[{\"object\": \"block\", \"type\": \"paragraph\", \"paragraph\": {\"text\": [{\"type\": \"text\", \"text\": {\"content\": \"New content\"}}]}}}]"}
+        ]
+      }
+    },
+    {
+      "name": "QueryDatabase",
+      "path": "/databases/{database_id}/query",
+      "method": "POST",
+      "description": "Query a database",
+      "request": {
+        "pathParams": [
+          {"name": "database_id", "type": "string", "required": true, "description": "Database ID", "example": "xxx"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "filter", "type": "object", "required": false, "description": "Filter conditions", "example": "{\"property\": \"status\", \"select\": {\"equals\": \"Done\"}}"},
+          {"name": "sorts", "type": "array", "required": false, "description": "Sort conditions", "example": "[{\"property\": \"created_time\", \"direction\": \"descending\"}]"},
+          {"name": "page_size", "type": "integer", "required": false, "description": "Number of results", "example": "100"},
+          {"name": "start_cursor", "type": "string", "required": false, "description": "Pagination cursor", "example": "xxx"}
+        ]
+      }
+    }
+  ]
+}

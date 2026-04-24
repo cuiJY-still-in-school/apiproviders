@@ -1,0 +1,116 @@
+{
+  "name": "slack",
+  "description": "Slack API - Team collaboration and messaging",
+  "baseURL": "https://slack.com/api",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${SLACK_BOT_TOKEN}"
+    }
+  },
+  "apis": [
+    {
+      "name": "AuthTest",
+      "path": "/auth.test",
+      "method": "GET",
+      "description": "Test authentication and identity",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ConversationsList",
+      "path": "/conversations.list",
+      "method": "GET",
+      "description": "List all channels in a workspace",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "types", "type": "string", "required": false, "description": "Channel types: public_channel, private_channel, im, mpim", "example": "public_channel,private_channel"},
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "100"},
+          {"name": "cursor", "type": "string", "required": false, "description": "Pagination cursor", "example": "xxx"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ChatPostMessage",
+      "path": "/chat.postMessage",
+      "method": "POST",
+      "description": "Send a message to a channel",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "channel", "type": "string", "required": true, "description": "Channel ID or name", "example": "C1234567890"},
+          {"name": "text", "type": "string", "required": true, "description": "Message text", "example": "Hello from lianAPI!"},
+          {"name": "username", "type": "string", "required": false, "description": "Bot username", "example": "My Bot"},
+          {"name": "icon_emoji", "type": "string", "required": false, "description": "Bot icon emoji", "example": ":robot_face:"},
+          {"name": "thread_ts", "type": "string", "required": false, "description": "Thread timestamp to reply to", "example": "1234567890.123456"}
+        ]
+      }
+    },
+    {
+      "name": "UsersList",
+      "path": "/users.list",
+      "method": "GET",
+      "description": "List users in workspace",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "100"},
+          {"name": "cursor", "type": "string", "required": false, "description": "Pagination cursor", "example": "xxx"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ConversationsHistory",
+      "path": "/conversations.history",
+      "method": "GET",
+      "description": "Get conversation history",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "channel", "type": "string", "required": true, "description": "Channel ID", "example": "C1234567890"},
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "100"},
+          {"name": "oldest", "type": "string", "required": false, "description": "Oldest timestamp", "example": "1609459200"},
+          {"name": "latest", "type": "string", "required": false, "description": "Latest timestamp", "example": "1609545600"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "SearchMessages",
+      "path": "/search.messages",
+      "method": "GET",
+      "description": "Search for messages",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "query", "type": "string", "required": true, "description": "Search query", "example": "hello"},
+          {"name": "count", "type": "integer", "required": false, "description": "Number of results", "example": "10"},
+          {"name": "page", "type": "integer", "required": false, "description": "Page number", "example": "1"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "FilesList",
+      "path": "/files.list",
+      "method": "GET",
+      "description": "List files",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "channel", "type": "string", "required": false, "description": "Channel ID", "example": "C1234567890"},
+          {"name": "user", "type": "string", "required": false, "description": "User ID", "example": "U1234567890"},
+          {"name": "count", "type": "integer", "required": false, "description": "Number of results", "example": "100"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "name": "stripe",
+  "description": "Stripe API - Online payment processing",
+  "baseURL": "https://api.stripe.com/v1",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${STRIPE_SECRET_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "Balance",
+      "path": "/balance",
+      "method": "GET",
+      "description": "Retrieve account balance",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "BalanceTransactions",
+      "path": "/balance_transactions",
+      "method": "GET",
+      "description": "List balance transactions",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results (1-100)", "example": "10"},
+          {"name": "type", "type": "string", "required": false, "description": "Type: charge, contribution, payout, etc.", "example": "charge"},
+          {"name": "currency", "type": "string", "required": false, "description": "Currency code", "example": "usd"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CreatePaymentIntent",
+      "path": "/payment_intents",
+      "method": "POST",
+      "description": "Create a payment intent",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "amount", "type": "integer", "required": true, "description": "Amount in smallest currency unit (cents)", "example": "2000"},
+          {"name": "currency", "type": "string", "required": true, "description": "Currency code", "example": "usd"},
+          {"name": "description", "type": "string", "required": false, "description": "Payment description", "example": "Order #123"},
+          {"name": "metadata", "type": "object", "required": false, "description": "Custom metadata", "example": "{\"order_id\": \"123\"}"},
+          {"name": "receipt_email", "type": "string", "required": false, "description": "Receipt email", "example": "customer@example.com"}
+        ]
+      }
+    },
+    {
+      "name": "RetrievePaymentIntent",
+      "path": "/payment_intents/{id}",
+      "method": "GET",
+      "description": "Retrieve a payment intent",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Payment intent ID", "example": "pi_xxx"}
+        ],
+        "queryParams": [],
+        "body": []
+      }
+    },
+    {
+      "name": "ConfirmPaymentIntent",
+      "path": "/payment_intents/{id}/confirm",
+      "method": "POST",
+      "description": "Confirm a payment intent",
+      "request": {
+        "pathParams": [
+          {"name": "id", "type": "string", "required": true, "description": "Payment intent ID", "example": "pi_xxx"}
+        ],
+        "queryParams": [],
+        "body": [
+          {"name": "payment_method", "type": "string", "required": false, "description": "Payment method ID", "example": "pm_xxx"}
+        ]
+      }
+    },
+    {
+      "name": "CreateCustomer",
+      "path": "/customers",
+      "method": "POST",
+      "description": "Create a customer",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "email", "type": "string", "required": false, "description": "Customer email", "example": "customer@example.com"},
+          {"name": "name", "type": "string", "required": false, "description": "Customer name", "example": "John Doe"},
+          {"name": "metadata", "type": "object", "required": false, "description": "Custom metadata", "example": "{\"user_id\": \"123\"}"}
+        ]
+      }
+    },
+    {
+      "name": "ListCustomers",
+      "path": "/customers",
+      "method": "GET",
+      "description": "List customers",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "email", "type": "string", "required": false, "description": "Filter by email", "example": "customer@example.com"},
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "10"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CreateRefund",
+      "path": "/refunds",
+      "method": "POST",
+      "description": "Create a refund",
+      "request": {
+        "pathParams": [],
+        "queryParams": [],
+        "body": [
+          {"name": "payment_intent", "type": "string", "required": true, "description": "Payment intent ID", "example": "pi_xxx"},
+          {"name": "amount", "type": "integer", "required": false, "description": "Amount to refund (in cents)", "example": "1000"},
+          {"name": "reason", "type": "string", "required": false, "description": "Reason: duplicate, fraudulent, requested_by_customer", "example": "requested_by_customer"}
+        ]
+      }
+    },
+    {
+      "name": "ListCharges",
+      "path": "/charges",
+      "method": "GET",
+      "description": "List charges",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "10"},
+          {"name": "customer", "type": "string", "required": false, "description": "Customer ID", "example": "cus_xxx"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

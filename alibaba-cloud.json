@@ -1,0 +1,81 @@
+{
+  "name": "alibaba-cloud",
+  "description": "Alibaba Cloud API - ECS, OSS, SMS and more cloud services",
+  "baseURL": "https://ecs.aliyuncs.com",
+  "auth": {
+    "type": "bearer",
+    "params": {
+      "token": "${ALIBABA_CLOUD_ACCESS_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "DescribeRegions",
+      "path": "/",
+      "method": "GET",
+      "description": "Get available regions",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "Action", "type": "string", "required": true, "description": "API action name", "example": "DescribeRegions"},
+          {"name": "Format", "type": "string", "required": false, "description": "Response format", "example": "JSON"},
+          {"name": "Version", "type": "string", "required": true, "description": "API version", "example": "2014-05-26"},
+          {"name": "AccessKeyId", "type": "string", "required": true, "description": "Your AccessKey ID", "example": "xxx"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "DescribeInstances",
+      "path": "/",
+      "method": "GET",
+      "description": "Describe ECS instances",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "Action", "type": "string", "required": true, "description": "API action name", "example": "DescribeInstances"},
+          {"name": "RegionId", "type": "string", "required": true, "description": "Region ID", "example": "cn-hangzhou"},
+          {"name": "PageSize", "type": "integer", "required": false, "description": "Page size", "example": "10"},
+          {"name": "PageNumber", "type": "integer", "required": false, "description": "Page number", "example": "1"},
+          {"name": "Version", "type": "string", "required": true, "description": "API version", "example": "2014-05-26"},
+          {"name": "AccessKeyId", "type": "string", "required": true, "description": "Your AccessKey ID", "example": "xxx"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "DescribeBuckets",
+      "path": "/",
+      "method": "GET",
+      "description": "List OSS buckets (oss-cn-hangzhou.aliyuncs.com)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "Action", "type": "string", "required": true, "description": "API action name", "example": "DescribeBuckets"},
+          {"name": "RegionId", "type": "string", "required": false, "description": "Region ID", "example": "cn-hangzhou"},
+          {"name": "Version", "type": "string", "required": true, "description": "API version", "example": "2014-05-26"},
+          {"name": "AccessKeyId", "type": "string", "required": true, "description": "Your AccessKey ID", "example": "xxx"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "ListObjects",
+      "path": "/",
+      "method": "GET",
+      "description": "List objects in OSS bucket",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "Action", "type": "string", "required": true, "description": "API action name", "example": "ListObjects"},
+          {"name": "Bucket", "type": "string", "required": true, "description": "Bucket name", "example": "my-bucket"},
+          {"name": "Prefix", "type": "string", "required": false, "description": "Object prefix filter", "example": "folder/"},
+          {"name": "MaxKeys", "type": "integer", "required": false, "description": "Max results", "example": "100"},
+          {"name": "Version", "type": "string", "required": true, "description": "API version", "example": "2014-05-26"},
+          {"name": "AccessKeyId", "type": "string", "required": true, "description": "Your AccessKey ID", "example": "xxx"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

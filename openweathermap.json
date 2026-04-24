@@ -1,0 +1,107 @@
+{
+  "name": "openweathermap",
+  "description": "OpenWeatherMap API - Weather data worldwide",
+  "baseURL": "https://api.openweathermap.org",
+  "auth": {
+    "type": "query",
+    "params": {
+      "appid": "${OPENWEATHERMAP_API_KEY}"
+    }
+  },
+  "apis": [
+    {
+      "name": "CurrentWeather",
+      "path": "/data/2.5/weather",
+      "method": "GET",
+      "description": "Get current weather data by city name",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "q", "type": "string", "required": true, "description": "City name (e.g., Beijing, London)", "example": "Beijing"},
+          {"name": "appid", "type": "string", "required": true, "description": "Your API key", "example": "your_api_key"},
+          {"name": "units", "type": "string", "required": false, "description": "Units: standard, metric, imperial", "example": "metric"},
+          {"name": "lang", "type": "string", "required": false, "description": "Language code", "example": "en"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "CurrentWeatherByCoords",
+      "path": "/data/2.5/weather",
+      "method": "GET",
+      "description": "Get current weather by coordinates",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "lat", "type": "number", "required": true, "description": "Latitude", "example": "39.9042"},
+          {"name": "lon", "type": "number", "required": true, "description": "Longitude", "example": "116.4074"},
+          {"name": "appid", "type": "string", "required": true, "description": "Your API key", "example": "your_api_key"},
+          {"name": "units", "type": "string", "required": false, "description": "Units: standard, metric, imperial", "example": "metric"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "Forecast5Days",
+      "path": "/data/2.5/forecast",
+      "method": "GET",
+      "description": "5 day weather forecast (3 hour step)",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "q", "type": "string", "required": true, "description": "City name", "example": "Beijing"},
+          {"name": "appid", "type": "string", "required": true, "description": "Your API key", "example": "your_api_key"},
+          {"name": "units", "type": "string", "required": false, "description": "Units: standard, metric, imperial", "example": "metric"},
+          {"name": "cnt", "type": "integer", "required": false, "description": "Number of results", "example": "40"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GeocodingDirect",
+      "path": "/geo/1.0/direct",
+      "method": "GET",
+      "description": "Geocoding - convert city name to coordinates",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "q", "type": "string", "required": true, "description": "City name", "example": "Beijing"},
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "5"},
+          {"name": "appid", "type": "string", "required": true, "description": "Your API key", "example": "your_api_key"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "GeocodingReverse",
+      "path": "/geo/1.0/reverse",
+      "method": "GET",
+      "description": "Reverse geocoding - convert coordinates to city name",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "lat", "type": "number", "required": true, "description": "Latitude", "example": "39.9042"},
+          {"name": "lon", "type": "number", "required": true, "description": "Longitude", "example": "116.4074"},
+          {"name": "limit", "type": "integer", "required": false, "description": "Max results", "example": "5"},
+          {"name": "appid", "type": "string", "required": true, "description": "Your API key", "example": "your_api_key"}
+        ],
+        "body": []
+      }
+    },
+    {
+      "name": "AirPollution",
+      "path": "/data/2.5/air_pollution",
+      "method": "GET",
+      "description": "Get air pollution data",
+      "request": {
+        "pathParams": [],
+        "queryParams": [
+          {"name": "lat", "type": "number", "required": true, "description": "Latitude", "example": "39.9042"},
+          {"name": "lon", "type": "number", "required": true, "description": "Longitude", "example": "116.4074"},
+          {"name": "appid", "type": "string", "required": true, "description": "Your API key", "example": "your_api_key"}
+        ],
+        "body": []
+      }
+    }
+  ]
+}

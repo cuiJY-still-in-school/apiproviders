@@ -1,0 +1,242 @@
+name: github
+description: GitHub REST API
+baseURL: https://api.github.com
+
+auth:
+  type: bearer
+  params:
+    token: ${GITHUB_TOKEN}
+
+apis:
+  - name: ListRepos
+    path: /user/repos
+    method: GET
+    description: List repositories for the authenticated user
+    request:
+      queryParams:
+        - name: sort
+          type: string
+          required: false
+          description: "Sort by: created, updated, pushed, full_name"
+          example: updated
+        - name: per_page
+          type: integer
+          required: false
+          description: Results per page (max 100)
+          example: 30
+        - name: page
+          type: integer
+          required: false
+          description: Page number
+          example: 1
+
+  - name: GetRepo
+    path: /repos/{owner}/{repo}
+    method: GET
+    description: Get a repository
+    request:
+      pathParams:
+        - name: owner
+          type: string
+          required: true
+          description: Repository owner
+        - name: repo
+          type: string
+          required: true
+          description: Repository name
+
+  - name: ListIssues
+    path: /repos/{owner}/{repo}/issues
+    method: GET
+    description: List issues for a repository
+    request:
+      pathParams:
+        - name: owner
+          type: string
+          required: true
+          description: Repository owner
+        - name: repo
+          type: string
+          required: true
+          description: Repository name
+      queryParams:
+        - name: state
+          type: string
+          required: false
+          description: "Filter: open, closed, all"
+          example: open
+        - name: labels
+          type: string
+          required: false
+          description: Comma-separated label names
+          example: bug,enhancement
+        - name: per_page
+          type: integer
+          required: false
+          description: Results per page
+          example: 30
+
+  - name: CreateIssue
+    path: /repos/{owner}/{repo}/issues
+    method: POST
+    description: Create an issue
+    request:
+      pathParams:
+        - name: owner
+          type: string
+          required: true
+          description: Repository owner
+        - name: repo
+          type: string
+          required: true
+          description: Repository name
+      body:
+        - name: title
+          type: string
+          required: true
+          description: Issue title
+          example: Bug in login
+        - name: body
+          type: string
+          required: false
+          description: Issue body
+          example: Steps to reproduce...
+        - name: labels
+          type: array
+          required: false
+          description: Label names
+          example: '["bug"]'
+
+  - name: ListPullRequests
+    path: /repos/{owner}/{repo}/pulls
+    method: GET
+    description: List pull requests
+    request:
+      pathParams:
+        - name: owner
+          type: string
+          required: true
+          description: Repository owner
+        - name: repo
+          type: string
+          required: true
+          description: Repository name
+      queryParams:
+        - name: state
+          type: string
+          required: false
+          description: "Filter: open, closed, all"
+          example: open
+        - name: per_page
+          type: integer
+          required: false
+          description: Results per page
+          example: 30
+
+  - name: CreatePullRequest
+    path: /repos/{owner}/{repo}/pulls
+    method: POST
+    description: Create a pull request
+    request:
+      pathParams:
+        - name: owner
+          type: string
+          required: true
+          description: Repository owner
+        - name: repo
+          type: string
+          required: true
+          description: Repository name
+      body:
+        - name: title
+          type: string
+          required: true
+          description: PR title
+          example: Add new feature
+        - name: head
+          type: string
+          required: true
+          description: The name of the branch where your changes are
+          example: feature-branch
+        - name: base
+          type: string
+          required: true
+          description: The name of the branch you want the changes pulled into
+          example: main
+        - name: body
+          type: string
+          required: false
+          description: PR body
+          example: This PR adds...
+
+  - name: ListGists
+    path: /gists
+    method: GET
+    description: List the authenticated user's gists
+    request:
+      queryParams:
+        - name: per_page
+          type: integer
+          required: false
+          description: Results per page
+          example: 30
+        - name: page
+          type: integer
+          required: false
+          description: Page number
+          example: 1
+
+  - name: CreateGist
+    path: /gists
+    method: POST
+    description: Create a gist
+    request:
+      body:
+        - name: description
+          type: string
+          required: false
+          description: Gist description
+          example: My gist
+        - name: public
+          type: boolean
+          required: true
+          description: Whether the gist is public
+          example: false
+        - name: files
+          type: object
+          required: true
+          description: Files in the gist
+          example: '{"file.txt": {"content": "Hello world"}}
+
+  - name: SearchRepos
+    path: /search/repositories
+    method: GET
+    description: Search repositories
+    request:
+      queryParams:
+        - name: q
+          type: string
+          required: true
+          description: Search query
+          example: "lianAPI in:name"
+        - name: sort
+          type: string
+          required: false
+          description: "Sort by: stars, forks, updated"
+          example: stars
+        - name: order
+          type: string
+          required: false
+          description: "Order: desc, asc"
+          example: desc
+        - name: per_page
+          type: integer
+          required: false
+          description: Results per page
+          example: 30
+
+  - name: GetCurrentUser
+    path: /user
+    method: GET
+    description: Get the authenticated user
+    request: {}
